@@ -12,8 +12,8 @@ Welcome to my **digital playground** — a place where creativity meets code. Th
 - [Google Dev Profile](https://g.dev/rs0)  
 - [Binance Profile](https://www.binance.com/en-IN/square/profile/nitra_x)  
 - [Telegram Channel](https://t.me/profit_pro_tip)  
-- [Profit Pro Blog](https://profitprotip.blogspot.com/)  
-- [RSX Website](https://rsx.rf.gd/)  
+- [Profit Pro Tip Blog](https://profitprotip.blogspot.com/)  
+- [RSX Exchange Website](https://rsx.rf.gd/)  
 
 ### Products  
 - [Profit Product](https://rsxin.gumroad.com/l/profit)  
@@ -35,7 +35,7 @@ Welcome to my **digital playground** — a place where creativity meets code. Th
 ## ⚡ Deployment
 
 This page is **hosted on Netlify**, auto-deployed via GitHub.  
-- Repository: [GitHub Repo](https://github.com/YOUR_USERNAME/sintu-website)  
+- Repository: [GitHub Repo](https://github.com/soulsync-cpu/sin2)  
 - Live site: `https://your-netlify-site.netlify.app`  
 
 Push any changes to this repo and Netlify automatically redeploys the page.
