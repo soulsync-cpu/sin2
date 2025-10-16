@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sintu | Digital Creator</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+    :root {
+      --mint: #00FFA3;
+      --pink: #FF007F;
+      --gold: #FFD600;
+      --bg-dark: #0D0D0D;
+      --glass: rgba(255, 255, 255, 0.1);
+      --text: #FFFFFF;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(270deg, var(--mint), var(--pink), var(--gold));
+      background-size: 600% 600%;
+      animation: gradient 10s ease infinite;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      padding: 20px;
+      opacity: 0;
+      animation: pageFadeIn 1.5s forwards ease-in;
+    }
+
+    @keyframes pageFadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes pageFadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; transform: scale(0.98); }
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      animation: floatUp 1.5s ease-out;
+    }
+
+    .profile-pic {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 3px solid var(--mint);
+      box-shadow: 0 0 25px var(--pink), 0 0 15px var(--gold);
+      margin-bottom: 1rem;
+      object-fit: cover;
+      animation: pulseGlow 4s infinite alternate, floatUp 1s ease-out;
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 20px var(--pink), 0 0 10px var(--gold); }
+      100% { box-shadow: 0 0 40px var(--mint), 0 0 20px var(--gold); }
+    }
+
+    @keyframes floatUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-shadow: 0 0 20px var(--mint), 0 0 40px var(--pink);
+      animation: floatUp 1.3s ease-out 0.3s both;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #eee;
+      margin-top: 0.5rem;
+      text-shadow: 0 0 10px var(--gold);
+      animation: floatUp 1.4s ease-out 0.6s both;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 90%;
+      max-width: 450px;
+      animation: floatUp 1.5s ease-out 0.8s both;
+    }
+
+    .link-btn {
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 15px;
+      text-align: center;
+      background: var(--glass);
+      color: var(--text);
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 15px rgba(0, 255, 163, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .link-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 25px var(--pink), 0 0 25px var(--gold);
+      border: 1px solid var(--mint);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      animation: floatUp 1.5s ease-out 1.2s both;
+    }
+
+    /* Music Player */
+    .music-player {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--glass);
+      padding: 12px 20px;
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(0, 255, 163, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: floatUp 2s ease-out 1.4s both;
+    }
+
+    .music-player button {
+      background: var(--mint);
+      border: none;
+      color: #000;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .music-player button:hover {
+      background: var(--pink);
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.2rem; }
+      p { font-size: 1rem; }
+      .link-btn { padding: 12px 15px; }
+      .profile-pic { width: 110px; height: 110px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://photos.app.goo.gl/cQrqNCKF6geUPMLr8" alt="Sintu Profile Picture" class="profile-pic" />
+    <h1>Sintu</h1>
+    <p>Digital Creator</p>
+  </header>
+
+  <section class="links">
+    <a href="https://www.linkedin.com/services/page/a2a5a332bb266061a8/" class="link-btn" target="_blank">LinkedIn</a>
+    <a href="https://g.dev/rs0" class="link-btn" target="_blank">Google Dev Profile</a>
+    <a href="https://www.binance.com/en-IN/square/profile/nitra_x" class="link-btn" target="_blank">Binance Profile</a>
+    <a href="https://t.me/profit_pro_tip" class="link-btn" target="_blank">Telegram Channel</a>
+    <a href="https://profitprotip.blogspot.com/" class="link-btn" target="_blank">Profit Pro Blog</a>
+    <a href="https://rsx.rf.gd/" class="link-btn" target="_blank">RSX Website</a>
+    <a href="https://rsxin.gumroad.com/l/profit" class="link-btn" target="_blank">Profit Product</a>
+    <a href="https://rsxin.gumroad.com/l/crypto" class="link-btn" target="_blank">Crypto Product</a>
+  </section>
+
+  <footer>
+    <p>🔥 Designed by Sintu | Inspired by the Future 🔥</p>
+  </footer>
+
+  <div class="music-player">
+    <button id="music-toggle">▶</button>
+    <audio id="bg-music" loop>
+      <source src="https://cdn.pixabay.com/audio/2023/07/25/audio_65f36a2c07.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <script>
+    const music = document.getElementById("bg-music");
+    const toggleBtn = document.getElementById("music-toggle");
+    let playing = false;
+
+    toggleBtn.addEventListener("click", () => {
+      if (!playing) {
+        music.play();
+        toggleBtn.textContent = "⏸";
+        playing = true;
+      } else {
+        music.pause();
+        toggleBtn.textContent = "▶";
+        playing = false;
+      }
+    });
+
+    // Fade-out when navigating away
+    window.addEventListener("beforeunload", () => {
+      document.body.style.animation = "pageFadeOut 0.6s forwards";
+    });
+  </script>
+</body>
+</html>
