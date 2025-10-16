@@ -9,11 +9,11 @@
 
     :root {
       --mint: #00FFA3;
-      --pink: #FF007F;
+      --pink: #FF59A8;
       --gold: #FFD600;
-      --bg-dark: #0D0D0D;
-      --glass: rgba(255, 255, 255, 0.1);
-      --text: #FFFFFF;
+      --dark-bg: #0D0D0D;
+      --text: #E0E0E0;
+      --glass: rgba(20,20,20,0.4);
     }
 
     * {
@@ -24,9 +24,7 @@
     }
 
     body {
-      background: linear-gradient(270deg, var(--mint), var(--pink), var(--gold));
-      background-size: 600% 600%;
-      animation: gradient 10s ease infinite;
+      background: #0D0D0D;
       color: var(--text);
       display: flex;
       flex-direction: column;
@@ -36,23 +34,20 @@
       overflow-x: hidden;
       position: relative;
       padding: 20px;
-      opacity: 0;
       animation: pageFadeIn 1.5s forwards ease-in;
     }
 
-    @keyframes pageFadeIn {
-      to { opacity: 1; }
-    }
+    /* Fade-in page */
+    @keyframes pageFadeIn { to { opacity:1; } }
 
-    @keyframes pageFadeOut {
-      from { opacity: 1; }
-      to { opacity: 0; transform: scale(0.98); }
-    }
-
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* Floating particles */
+    canvas#bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
 
     header {
@@ -73,8 +68,8 @@
     }
 
     @keyframes pulseGlow {
-      0% { box-shadow: 0 0 20px var(--pink), 0 0 10px var(--gold); }
-      100% { box-shadow: 0 0 40px var(--mint), 0 0 20px var(--gold); }
+      0% { box-shadow: 0 0 15px var(--pink),0 0 10px var(--gold); }
+      100% { box-shadow: 0 0 35px var(--mint),0 0 20px var(--gold); }
     }
 
     @keyframes floatUp {
@@ -92,7 +87,7 @@
 
     p {
       font-size: 1.1rem;
-      color: #eee;
+      color: var(--text);
       margin-top: 0.5rem;
       text-shadow: 0 0 10px var(--gold);
       animation: floatUp 1.4s ease-out 0.6s both;
@@ -118,14 +113,14 @@
       text-decoration: none;
       backdrop-filter: blur(10px);
       font-weight: 600;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 0 15px rgba(0, 255, 163, 0.3);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 0 15px rgba(0,255,163,0.2);
       transition: all 0.3s ease;
     }
 
     .link-btn:hover {
       transform: translateY(-4px);
-      box-shadow: 0 0 25px var(--pink), 0 0 25px var(--gold);
+      box-shadow: 0 0 25px var(--pink),0 0 25px var(--gold);
       border: 1px solid var(--mint);
     }
 
@@ -146,7 +141,7 @@
       padding: 12px 20px;
       border-radius: 30px;
       backdrop-filter: blur(10px);
-      box-shadow: 0 0 20px rgba(0, 255, 163, 0.4);
+      box-shadow: 0 0 20px rgba(0,255,163,0.3);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -170,19 +165,22 @@
       color: #fff;
     }
 
-    @media (max-width: 600px) {
-      h1 { font-size: 2.2rem; }
-      p { font-size: 1rem; }
-      .link-btn { padding: 12px 15px; }
-      .profile-pic { width: 110px; height: 110px; }
+    @media(max-width:600px){
+      h1{ font-size:2.2rem; }
+      p{ font-size:1rem; }
+      .link-btn{ padding:12px 15px; }
+      .profile-pic{ width:110px; height:110px; }
     }
   </style>
 </head>
 <body>
+  <!-- Background Canvas for particles -->
+  <canvas id="bgCanvas"></canvas>
+
   <header>
-    <img src="https://photos.app.goo.gl/cQrqNCKF6geUPMLr8" alt="Sintu Profile Picture" class="profile-pic" />
+    <img src="https://drive.google.com/uc?export=view&id=1vUarUFSJrVLIODpeJNMGYeL2YoW5yteN" alt="Sintu Profile Picture" class="profile-pic">
     <h1>Sintu</h1>
-    <p>Digital Creator</p>
+    <p>Crafting digital dreams into reality.</p>
   </header>
 
   <section class="links">
@@ -203,30 +201,88 @@
   <div class="music-player">
     <button id="music-toggle">▶</button>
     <audio id="bg-music" loop>
-      <source src="https://cdn.pixabay.com/audio/2023/07/25/audio_65f36a2c07.mp3" type="audio/mpeg">
+      <source src="https://drive.google.com/uc?export=download&id=1__A2HoXVMyL_9xKau3MTQuht2HpWaA7w" type="audio/mpeg">
     </audio>
   </div>
 
+  <!-- Particle background JS -->
   <script>
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    let particlesArray;
+
+    function initParticles(){
+      particlesArray = [];
+      const number = Math.floor(window.innerWidth / 10);
+      for(let i=0;i<number;i++){
+        particlesArray.push({
+          x: Math.random()*canvas.width,
+          y: Math.random()*canvas.height,
+          size: Math.random()*3+1,
+          speedX: (Math.random()-0.5)*0.5,
+          speedY: (Math.random()-0.5)*0.5,
+          color: `rgba(255,255,255,${Math.random()})`
+        });
+      }
+    }
+
+    function drawParticles(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      for(let i=0;i<particlesArray.length;i++){
+        const p = particlesArray[i];
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+      }
+    }
+
+    function updateParticles(){
+      for(let i=0;i<particlesArray.length;i++){
+        const p = particlesArray[i];
+        p.x += p.speedX;
+        p.y += p.speedY;
+        if(p.x < 0 || p.x > canvas.width) p.speedX*=-1;
+        if(p.y < 0 || p.y > canvas.height) p.speedY*=-1;
+      }
+    }
+
+    function animateParticles(){
+      drawParticles();
+      updateParticles();
+      requestAnimationFrame(animateParticles);
+    }
+
+    function resizeCanvas(){
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initParticles();
+    }
+
+    window.addEventListener('resize',resizeCanvas);
+    resizeCanvas();
+    animateParticles();
+
+    // Music player
     const music = document.getElementById("bg-music");
     const toggleBtn = document.getElementById("music-toggle");
     let playing = false;
 
-    toggleBtn.addEventListener("click", () => {
-      if (!playing) {
+    toggleBtn.addEventListener("click", ()=>{
+      if(!playing){
         music.play();
-        toggleBtn.textContent = "⏸";
-        playing = true;
-      } else {
+        toggleBtn.textContent="⏸";
+        playing=true;
+      } else{
         music.pause();
-        toggleBtn.textContent = "▶";
-        playing = false;
+        toggleBtn.textContent="▶";
+        playing=false;
       }
     });
 
-    // Fade-out when navigating away
-    window.addEventListener("beforeunload", () => {
-      document.body.style.animation = "pageFadeOut 0.6s forwards";
+    // Fade-out on page leave
+    window.addEventListener("beforeunload", ()=>{
+      document.body.style.animation="pageFadeOut 0.6s forwards";
     });
   </script>
 </body>
