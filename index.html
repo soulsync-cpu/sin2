@@ -179,12 +179,12 @@
 
   <header>
     <img src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/DSC_0992.jpg" alt="Sintu Profile Picture" class="profile-pic">
-    <h1>Sintu</h1>
-    <p>Crafting digital dreams into reality.</p>
+    <h1>Sintu Singh</h1>
+    <p>Digital Creator</p>
   </header>
 
   <section class="links">
-    <a href="https://www.linkedin.com/services/page/a2a5a332bb266061a8/" class="link-btn" target="_blank">LinkedIn</a>
+    <a href="https://www.linkedin.com/services/page/a2a5a332bb266061a8/" class="link-btn" target="_blank">LinkedIn Services</a>
     <a href="https://g.dev/rs0" class="link-btn" target="_blank">Google Dev Profile</a>
     <a href="https://www.binance.com/en-IN/square/profile/nitra_x" class="link-btn" target="_blank">Binance Square Profile</a>
     <a href="https://t.me/profit_pro_tip" class="link-btn" target="_blank">Telegram Channel</a>
@@ -199,11 +199,39 @@
   </footer>
 
   <div class="music-player">
-    <button id="music-toggle">▶</button>
-    <audio id="bg-music" loop>
-      <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy-of-baroque-cinematic-background-music-for-video-stories-1-min-416088.mp3" type="audio/mpeg">
-    </audio>
-  </div>
+  <button id="music-toggle">⏸</button>
+  <audio id="bg-music" loop autoplay>
+    <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy-of-baroque-cinematic-background-music-for-video-stories-1-min-416088.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<script>
+const music = document.getElementById("bg-music");
+const toggleBtn = document.getElementById("music-toggle");
+
+// Try to play automatically
+music.volume = 0.5; // optional, start at 50% volume
+music.play().catch(()=> {
+  // Browser blocked autoplay
+  toggleBtn.textContent = "▶"; // show play button
+});
+
+let playing = !music.paused;
+
+// Toggle play/pause
+toggleBtn.addEventListener("click", ()=>{
+  if(playing){
+    music.pause();
+    toggleBtn.textContent = "▶";
+    playing = false;
+  } else{
+    music.play();
+    toggleBtn.textContent = "⏸";
+    playing = true;
+  }
+});
+</script>
+
 
   <!-- Particle background JS -->
   <script>
