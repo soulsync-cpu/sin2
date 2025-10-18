@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sintu Singh | Digital Creator</title>
 
   <!-- SEO & Social -->
-  <meta name="description" content="Sintu Singh — Trading dreams in digital gold. Digital Creator & Crypto Trader." />
-  <meta name="author" content="Sintu Singh" />
+  <meta name="description" content="Sintu Singh — Trading dreams in digital gold. Digital Creator & Crypto Trader.">
+  <meta name="author" content="Sintu Singh">
   <meta property="og:title" content="Sintu Singh | Digital Creator">
   <meta property="og:description" content="Trading dreams in digital gold.">
-  <meta property="og:image" content="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/DSC_0992.jpg">
-  <meta property="og:url" content="https://sintus.netlify.app">
+  <meta property="og:image" content="DSC_0992.jpg">
+  <meta property="og:url" content="https://your-netlify-site.netlify.app">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Security -->
@@ -21,21 +21,26 @@
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
   <!-- Favicon -->
-  <link rel="icon" href="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/DSC_0992.jpg" type="image/jpeg">
+  <link rel="icon" href="DSC_0992.jpg" type="image/jpeg">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="styles.css">
+  <!-- Fonts & CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- Star Background -->
+  <canvas id="star-bg"></canvas>
+
   <!-- Header -->
   <header class="hero-header">
-    <img src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/DSC_0992.jpg" alt="Sintu Profile Picture" class="profile-pic animate-fade">
+    <img src="DSC_0992.jpg" alt="Sintu Profile Picture" class="profile-pic animate-fade">
     <h1 class="animate-slide">Sintu Singh</h1>
     <p class="tagline animate-fade">Trading dreams in digital gold.</p>
     <p class="subtitle animate-fade-delay">
       💻 Digital Creator | Crypto Trader | Web Innovator  
       <br>
+      Building value from chaos, one trade at a time.
     </p>
   </header>
 
@@ -76,20 +81,17 @@
   </section>
 
   <!-- Cookie / Music Bar -->
-<div id="cookie-bar" class="cookie-bar">
-  <p>🎵 This site uses cookies & background music. By continuing, you agree.</p>
-  <div class="cookie-controls">
-    <button id="accept-cookies">Accept</button>
-    <button id="music-toggle">🔊 Pause Music</button>
+  <div id="cookie-bar" class="cookie-bar">
+    <p>🎵 This site uses cookies & background music. By continuing, you agree.</p>
+    <div class="cookie-controls">
+      <button id="accept-cookies">Accept</button>
+      <button id="music-toggle">🔊 Pause Music</button>
+    </div>
   </div>
-</div>
-
-<!-- Background canvas for stars -->
-<canvas id="star-bg"></canvas>
 
   <!-- Music -->
   <audio id="bg-music" loop>
-    <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy.mp3" type="audio/mpeg">
+    <source src="legacy-music.mp3" type="audio/mpeg">
   </audio>
 
   <!-- JS -->
