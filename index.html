@@ -57,7 +57,7 @@
     .link-btn:hover {color:#fff; text-shadow:0 0 8px #1db954;}
     .link-item p {font-size:0.9rem; color:#ccc; line-height:1.4;}
 
-    /* ===== COOKIE / MUSIC BAR ===== */
+    /* ===== COOKIE BAR ===== */
     .cookie-bar {
       position:fixed; bottom:15px; left:50%; transform:translateX(-50%);
       background:rgba(15,15,20,0.95); border:1px solid rgba(255,255,255,0.15);
@@ -71,6 +71,24 @@
       cursor:pointer; font-size:0.85rem; transition:all 0.3s;
     }
     .cookie-controls button:hover {background:#17a84c; transform:scale(1.05);}
+
+    /* ===== MUSIC TOGGLE (SEPARATE) ===== */
+    #music-toggle {
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      z-index:10000;
+      display:none;
+      background:#1db954;
+      color:#fff;
+      border:none;
+      border-radius:12px;
+      padding:10px 14px;
+      cursor:pointer;
+      box-shadow:0 6px 18px rgba(0,0,0,0.3);
+      font-size:0.95rem;
+    }
+    #music-toggle:active {transform:scale(0.98);}
   </style>
 </head>
 <body>
@@ -121,21 +139,25 @@
       <p>Download resources and insights to level up your crypto game.</p>
     </div>
   </section>
+
 <footer>
   <!-- Cookie / Music Bar -->
-  <div id="cookie-bar" class="cookie-bar">
+  <div id="cookie-bar" class="cookie-bar" role="dialog" aria-live="polite">
     <p>🎵 This site uses cookies & background music. By continuing, you agree.</p>
     <div class="cookie-controls">
-      <button id="accept-cookies">Accept</button>
-      <button id="music-toggle" style="display:none;">🔊 Pause Music</button>
+      <button id="accept-cookies" aria-label="Accept cookies and play music">Accept</button>
     </div>
   </div>
+
+  <!-- Music Toggle (moved out of cookie bar so it can be shown independently) -->
+  <button id="music-toggle" aria-label="Toggle background music">🔊 Play Music</button>
 
   <!-- Music -->
   <audio id="bg-music" loop>
     <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy.mp3" type="audio/mpeg">
   </audio>
 </footer>
+
   <script>
     // Elements
     const music = document.getElementById('bg-music');
@@ -143,29 +165,57 @@
     const cookieBar = document.getElementById('cookie-bar');
     const acceptBtn = document.getElementById('accept-cookies');
 
-    // Show/hide based on localStorage
-    if(localStorage.getItem('cookieAccepted')){
-      cookieBar.style.display = 'none';
+    // Helper to update music toggle UI
+    function updateMusicButton() {
       musicToggle.style.display = 'inline-block';
-      music.play().catch(()=>{});
+      musicToggle.textContent = music.paused ? '🔊 Play Music' : '🔇 Pause Music';
     }
 
-    // Accept cookies
-    acceptBtn.addEventListener('click', ()=>{
-      localStorage.setItem('cookieAccepted', true);
+    // Initialize: check localStorage for acceptance
+    const cookieAccepted = localStorage.getItem('cookieAccepted') === 'true';
+
+    if (cookieAccepted) {
+      // Hide cookie prompt
       cookieBar.style.display = 'none';
-      musicToggle.style.display = 'inline-block';
-      music.play().catch(()=>{});
+
+      // Try to autoplay. If blocked by the browser, just show the toggle so user can start playback.
+      music.play().then(() => {
+        updateMusicButton();
+      }).catch((err) => {
+        // Autoplay was probably blocked — show the toggle so the user can start playback
+        console.warn('Autoplay blocked or failed:', err);
+        updateMusicButton();
+      });
+    } else {
+      // Show cookie prompt and keep music toggle hidden until user accepts
+      cookieBar.style.display = 'flex';
+      musicToggle.style.display = 'none';
+    }
+
+    // Accept cookies button — this is a user gesture and should allow playback
+    acceptBtn.addEventListener('click', () => {
+      localStorage.setItem('cookieAccepted', 'true');
+      cookieBar.style.display = 'none';
+      // Attempt to play (user gesture). If it fails, still show the toggle for manual start.
+      music.play().then(() => {
+        updateMusicButton();
+      }).catch((err) => {
+        console.warn('Play failed after accept:', err);
+        updateMusicButton();
+      });
     });
 
-    // Music toggle
-    musicToggle.addEventListener('click', ()=>{
-      if(music.paused){
-        music.play().catch(()=>{});
-        musicToggle.textContent = '🔊 Pause Music';
+    // Music toggle click handler
+    musicToggle.addEventListener('click', () => {
+      if (music.paused) {
+        music.play().then(() => {
+          updateMusicButton();
+        }).catch(err => {
+          console.warn('Play failed:', err);
+        });
       } else {
         music.pause();
-        musicToggle.textContent = '🎵 Play Music';
+        updateMusicButton();
       }
     });
 
