@@ -1,265 +1,160 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+/* ====== GLOBAL ====== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-    :root {
-      --mint: #00FFA3;
-      --pink: #FF59A8;
-      --gold: #FFD600;
-      --dark-bg: #0D0D0D;
-      --text: #E0E0E0;
-      --glass: rgba(20,20,20,0.4);
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      background: #0D0D0D;
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-      padding: 20px;
-      animation: pageFadeIn 1.5s forwards ease-in;
-    }
-
-    /* Fade-in page */
-    @keyframes pageFadeIn { to { opacity:1; } }
-
-    /* Floating particles */
-    canvas#bgCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 2rem;
-      animation: floatUp 1.5s ease-out;
-    }
-
-    .hero-header {
-  text-align: center;
-  padding: 60px 20px;
+body {
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #0b0f17, #090c12 70%);
   color: #fff;
-  z-index: 2;
-  position: relative;
-}
-
-.profile-pic {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  border: 3px solid #d4af37; /* gold border */
-  box-shadow: 0 0 25px rgba(255, 182, 193, 0.4);
-  object-fit: cover;
-  margin-bottom: 20px;
-  transition: transform 0.6s ease;
-}
-
-.profile-pic:hover {
-  transform: scale(1.05) rotate(2deg);
-}
-
-.tagline {
-  font-size: 1.2rem;
-  color: #d0ffd6; /* mint text */
-  font-weight: 400;
-  margin-top: 10px;
-}
-
-.subtitle {
-  font-size: 1rem;
-  color: #ffb6c1; /* soft pink */
-  margin-top: 8px;
-  line-height: 1.6;
-}
-
-/* entry animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade {
-  animation: fadeIn 1.5s ease forwards;
-}
-
-.animate-slide {
-  animation: slideIn 1.3s ease forwards;
-}
-
-.animate-fade-delay {
-  animation: fadeIn 2s ease forwards;
-  animation-delay: 0.3s;
-  opacity: 0;
-}
-    @keyframes pulseGlow {
-      0% { box-shadow: 0 0 15px var(--pink),0 0 10px var(--gold); }
-      100% { box-shadow: 0 0 35px var(--mint),0 0 20px var(--gold); }
-    }
-
-    @keyframes floatUp {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-shadow: 0 0 20px var(--mint), 0 0 40px var(--pink);
-      animation: floatUp 1.3s ease-out 0.3s both;
-    }
-
-    p {
-      font-size: 1.1rem;
-      color: var(--text);
-      margin-top: 0.5rem;
-      text-shadow: 0 0 10px var(--gold);
-      animation: floatUp 1.4s ease-out 0.6s both;
-    }
-
-    .links {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.2rem;
-  margin: 2rem 0;
+  justify-content: start;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* ====== HEADER ====== */
+.hero-header {
+  text-align: center;
+  padding: 60px 20px 40px;
+  position: relative;
+  animation: fadeIn 1.2s ease-in-out forwards;
+}
+
+.profile-pic {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 3px solid #1db954;
+  object-fit: cover;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(29, 185, 84, 0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(29, 185, 84, 0.8);
+}
+
+.hero-header h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #1db954;
+  margin-bottom: 5px;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #e4e4e4;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #aaa;
+  font-size: 0.95rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* ====== LINKS SECTION ====== */
+.links {
+  width: 90%;
+  max-width: 750px;
+  margin: 30px auto;
+  display: grid;
+  gap: 18px;
 }
 
 .link-item {
-  width: 90%;
-  max-width: 500px;
-  text-align: center;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
-  padding: 1rem 1.5rem;
-  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 16px 20px;
+  backdrop-filter: blur(6px);
   transition: all 0.3s ease;
-  animation: fadeInUp 0.8s ease forwards;
 }
 
 .link-item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+  background: rgba(29, 185, 84, 0.1);
+  border-color: rgba(29, 185, 84, 0.3);
 }
 
 .link-btn {
   display: inline-block;
-  font-size: 1.1rem;
-  color: #00ffd1;
+  font-weight: 600;
+  color: #1db954;
   text-decoration: none;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  transition: color 0.3s ease;
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+  transition: all 0.3s ease;
 }
 
 .link-btn:hover {
-  color: #ffd700;
+  color: #fff;
+  text-shadow: 0 0 8px #1db954;
 }
 
 .link-item p {
   font-size: 0.9rem;
   color: #ccc;
+  line-height: 1.4;
 }
 
-/* Cookie Bar */
+/* ====== COOKIE / MUSIC BAR ====== */
 .cookie-bar {
   position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: rgba(20, 20, 20, 0.9);
-  color: #fff;
-  padding: 1rem 2rem;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 15, 20, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  padding: 12px 18px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
-  z-index: 999;
-  animation: slideUp 1s ease forwards;
+  gap: 15px;
+  font-size: 0.9rem;
+  color: #ccc;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  animation: slideUp 0.7s ease-out;
+  z-index: 99;
 }
 
 .cookie-controls button {
-  background: #00ffd1;
+  background: #1db954;
+  color: #fff;
   border: none;
-  padding: 0.5rem 1rem;
   border-radius: 8px;
+  padding: 6px 12px;
   cursor: pointer;
-  font-weight: bold;
+  font-size: 0.85rem;
   transition: all 0.3s ease;
 }
 
 .cookie-controls button:hover {
-  background: #ffd700;
-  color: #000;
+  background: #17a84c;
+  transform: scale(1.05);
+}
+
+/* ====== ANIMATIONS ====== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideUp {
-  from { transform: translateY(100%); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from { transform: translate(-50%, 80px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
 }
-    footer {
-      position: absolute;
-      bottom: 10px;
-      font-size: 0.9rem;
-      opacity: 0.8;
-      animation: floatUp 1.5s ease-out 1.2s both;
-    }
-
-    /* Music Player */
-    .music-player {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--glass);
-      padding: 12px 20px;
-      border-radius: 30px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 20px rgba(0,255,163,0.3);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      animation: floatUp 2s ease-out 1.4s both;
-    }
-
-    .music-player button {
-      background: var(--mint);
-      border: none;
-      color: #000;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .music-player button:hover {
-      background: var(--pink);
-      color: #fff;
-    }
-
-    @media(max-width:600px){
-      h1{ font-size:2.2rem; }
-      p{ font-size:1rem; }
-      .link-btn{ padding:12px 15px; }
-      .profile-pic{ width:110px; height:110px; }
-    }
