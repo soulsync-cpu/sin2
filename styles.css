@@ -147,6 +147,17 @@ body {
   background: #17a84c;
   transform: scale(1.05);
 }
+/* Star canvas full screen */
+#star-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* behind everything */
+  background: #090c12; /* dark space background */
+}
+
 
 /* ====== ANIMATIONS ====== */
 @keyframes fadeIn {
