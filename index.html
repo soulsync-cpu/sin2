@@ -131,42 +131,50 @@ body{
   </section>
 
   <!-- Cookie / Music Bar -->
-  <div id="cookie-bar" class="cookie-bar">
-    <p>🎵 This site uses cookies & background music. By continuing, you agree.</p>
-    <div class="cookie-controls">
-      <button id="accept-cookies">Accept</button>
-      <button id="music-toggle">🔊 Pause Music</button>
-    </div>
+<div id="cookie-bar" class="cookie-bar">
+  <p>🎵 This site uses cookies & background music. By continuing, you agree.</p>
+  <div class="cookie-controls">
+    <button id="accept-cookies">Accept</button>
+    <button id="music-toggle">🔊 Pause Music</button>
   </div>
+</div>
 
-  <!-- Music -->
-  <audio id="bg-music" loop>
-    <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy.mp3" type="audio/mpeg">
-  </audio>
+<!-- Music -->
+<audio id="bg-music" loop>
+  <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy.mp3" type="audio/mpeg">
+</audio>
 
-  <!-- JS -->
-  <script>
-    // Music + Cookie
-const music=document.getElementById('bg-music');
-const musicToggle=document.getElementById('music-toggle');
-const cookieBar=document.getElementById('cookie-bar');
-const acceptBtn=document.getElementById('accept-cookies');
+<!-- JS -->
+<script>
+  // Music + Cookie logic
+  const music = document.getElementById('bg-music');
+  const musicToggle = document.getElementById('music-toggle');
+  const cookieBar = document.getElementById('cookie-bar');
+  const acceptBtn = document.getElementById('accept-cookies');
 
-if(localStorage.getItem('cookieAccepted')){
-  cookieBar.style.display='none';
-  music.play().catch(()=>{});
-}
+  // Check if user already accepted cookies
+  if(localStorage.getItem('cookieAccepted')) {
+    cookieBar.style.display = 'none';
+    music.play().catch(()=>{}); // may fail if browser blocks autoplay
+  }
 
-acceptBtn.addEventListener('click',()=>{
-  localStorage.setItem('cookieAccepted',true);
-  cookieBar.style.display='none';
-  music.play().catch(()=>{});
-});
+  // Accept cookies button triggers music
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('cookieAccepted', true);
+    cookieBar.style.display = 'none';
+    music.play().catch(()=>{}); // play after user interaction
+  });
 
-musicToggle.addEventListener('click',()=>{
-  if(music.paused){music.play(); musicToggle.textContent='🔊 Pause Music';}
-  else{music.pause(); musicToggle.textContent='🎵 Play Music';}
-});
+  // Music toggle
+  musicToggle.addEventListener('click', () => {
+    if(music.paused){
+      music.play().catch(()=>{});
+      musicToggle.textContent = '🔊 Pause Music';
+    } else {
+      music.pause();
+      musicToggle.textContent = '🎵 Play Music';
+    }
+  });
 
 // Floating Stars
 const canvas=document.getElementById('star-bg');
@@ -180,6 +188,6 @@ function drawStars(){ctx.clearRect(0,0,canvas.width,canvas.height); ctx.fillStyl
 initStars();
 drawStars();
 
-  </script>
+</script>
 </body>
 </html>
