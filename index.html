@@ -1,94 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sintu Singh | Digital Creator</title>
-  <meta name="description" content="Sintu Singh — Trading dreams in digital gold. Digital Creator & Crypto Trader.">
-  <meta name="author" content="Sintu Singh">
-  <link rel="icon" href="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/DSC_0992.jpg" type="image/jpeg">
+  <meta name="description" content="Sintu Singh — Trading dreams in digital gold. Digital Creator & Crypto Trader." />
+  <meta name="author" content="Sintu Singh" />
+  <link rel="icon" href="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/DSC_0992.jpg" type="image/jpeg" />
 
   <style>
     /* ===== GLOBAL ===== */
-    * {margin:0; padding:0; box-sizing:border-box;}
-    body {
-      font-family:'Poppins', sans-serif;
+    * { margin:0; padding:0; box-sizing:border-box; }
+    :root{
+      --bg: #090c12;
+      --glass: rgba(255,255,255,0.04);
+      --accent: #1db954;
+      --muted: #9aa3a0;
+      --card: rgba(15,15,20,0.8);
+      --glass-border: rgba(255,255,255,0.06);
+    }
+    body{
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       color:#fff;
+      background:var(--bg);
       min-height:100vh;
       display:flex;
       flex-direction:column;
       align-items:center;
       overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
       scroll-behavior:smooth;
-      background:#090c12;
     }
 
     /* ===== STAR CANVAS ===== */
     #star-bg {
-      position:fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      z-index:-1;
-      background:#090c12;
+      position:fixed; inset:0; z-index:-1; background:var(--bg);
     }
 
     /* ===== HEADER ===== */
-    .hero-header {text-align:center; padding:60px 20px 40px;}
+    .hero-header { text-align:center; padding:60px 20px 18px; max-width:1000px; width:100%; }
     .profile-pic {
-      width:130px; height:130px; border-radius:50%; border:3px solid #1db954;
-      object-fit:cover; margin-bottom:20px; box-shadow:0 0 20px rgba(29,185,84,0.4);
-      transition:transform 0.4s, box-shadow 0.4s;
+      width:130px; height:130px; border-radius:50%;
+      border:3px solid var(--accent);
+      object-fit:cover; margin:0 auto 18px; box-shadow:0 8px 40px rgba(29,185,84,0.13);
+      transition:transform .35s, box-shadow .35s;
     }
-    .profile-pic:hover {transform:scale(1.08); box-shadow:0 0 25px rgba(29,185,84,0.8);}
-    .hero-header h1 {font-size:2.2rem; font-weight:600; color:#1db954; margin-bottom:5px;}
-    .tagline {font-size:1.1rem; font-weight:400; color:#e4e4e4; margin-bottom:10px;}
-    .subtitle {color:#aaa; font-size:0.95rem; max-width:400px; margin:0 auto;}
+    .profile-pic:hover { transform:scale(1.05); box-shadow:0 12px 60px rgba(29,185,84,0.25); }
+    .hero-header h1 { font-size:2.2rem; color:var(--accent); margin-bottom:6px; }
+    .tagline { font-size:1.05rem; color:#e7e7e7; margin-bottom:8px; }
+    .subtitle { color:#aaa; font-size:0.95rem; max-width:680px; margin:0 auto; line-height:1.4; }
+
+    /* ===== SOCIAL ICONS ===== */
+    .social-row { display:flex; gap:10px; align-items:center; justify-content:center; margin:14px auto; max-width:900px; width:92%; }
+    .social { --icon-size:44px; width:var(--icon-size); height:var(--icon-size); display:inline-grid; place-items:center; background:rgba(255,255,255,0.03); border:1px solid var(--glass-border); border-radius:10px; text-decoration:none; color:var(--accent); transition:transform .18s ease, box-shadow .18s ease; box-shadow:0 8px 22px rgba(0,0,0,0.45); position:relative; }
+    .social svg { width:60%; height:60%; display:block; fill:currentColor; }
+    .social:hover, .social:focus { transform:translateY(-6px) scale(1.03); box-shadow:0 18px 40px rgba(29,185,84,0.12); outline:none; }
+    .social[data-name]:hover::after, .social[data-name]:focus::after { content:attr(data-name); position:absolute; bottom:calc(var(--icon-size) + 10px); left:50%; transform:translateX(-50%); background:rgba(6,8,10,0.95); color:#ddd; font-size:12px; padding:6px 8px; border-radius:8px; white-space:nowrap; box-shadow:0 8px 22px rgba(0,0,0,0.5); }
+    .social-bar { position:fixed; left:18px; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:10px; z-index:12000; }
+    .social-bar .social { width:44px; height:44px; border-radius:12px; }
+    @media (max-width:720px){ .social-bar { display:none; } }
 
     /* ===== LINKS ===== */
-    .links {width:90%; max-width:750px; margin:30px auto; display:grid; gap:18px;}
-    .link-item {
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,0.1);
-      border-radius:16px; padding:16px 20px;
-      backdrop-filter:blur(6px); transition:all 0.3s;
-    }
-    .link-item:hover {transform:translateY(-4px); background:rgba(29,185,84,0.1); border-color:rgba(29,185,84,0.3);}
-    .link-btn {display:inline-block; font-weight:600; color:#1db954; text-decoration:none; font-size:1.05rem; margin-bottom:6px; transition:all 0.3s;}
-    .link-btn:hover {color:#fff; text-shadow:0 0 8px #1db954;}
-    .link-item p {font-size:0.9rem; color:#ccc; line-height:1.4;}
+    .links { width:92%; max-width:900px; margin:18px auto; display:grid; gap:16px; }
+    .link-item { background:var(--glass); border:1px solid var(--glass-border); border-radius:14px; padding:14px 18px; backdrop-filter: blur(8px); transition: transform .22s, box-shadow .22s; }
+    .link-item:hover { transform:translateY(-6px); box-shadow:0 12px 30px rgba(0,0,0,0.45); }
+    .link-btn { color:var(--accent); font-weight:600; text-decoration:none; display:inline-block; margin-bottom:6px; }
+    .link-item p { color:#d9d9d9; font-size:.94rem; }
 
-    /* ===== COOKIE BAR ===== */
-    .cookie-bar {
-      position:fixed; bottom:15px; left:50%; transform:translateX(-50%);
-      background:rgba(15,15,20,0.95); border:1px solid rgba(255,255,255,0.15);
-      border-radius:16px; backdrop-filter:blur(10px);
-      padding:12px 18px; display:flex; align-items:center; gap:15px;
-      font-size:0.9rem; color:#ccc; box-shadow:0 0 15px rgba(0,0,0,0.3);
-      z-index:9999;
-    }
-    .cookie-controls button {
-      background:#1db954; color:#fff; border:none; border-radius:8px; padding:6px 12px;
-      cursor:pointer; font-size:0.85rem; transition:all 0.3s;
-    }
-    .cookie-controls button:hover {background:#17a84c; transform:scale(1.05);}
+    /* ===== INLINE PLAYER ===== */
+    .player-wrap { width:92%; max-width:900px; margin:12px auto 26px; display:block; }
+    .player { display:flex; gap:14px; align-items:center; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.06); padding:12px; border-radius:14px; box-shadow:0 8px 30px rgba(0,0,0,0.45); backdrop-filter: blur(8px); position:relative; overflow:hidden; }
+    .art { min-width:84px; width:84px; height:84px; border-radius:10px; background:linear-gradient(135deg, rgba(29,185,84,0.12), rgba(29,185,84,0.05)); border:1px solid rgba(255,255,255,0.04); display:flex; align-items:center; justify-content:center; overflow:hidden; flex-shrink:0; }
+    .art img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .meta { flex:1; min-width:0; display:flex; flex-direction:column; gap:10px; }
+    .meta-top { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    .title { font-weight:700; color:#f1f1f1; font-size:1.02rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .artist { color:var(--muted); font-size:0.88rem; margin-top:2px; }
+    .controls { display:flex; align-items:center; gap:12px; }
+    .btn-play { background:var(--accent); color:#fff; border:none; border-radius:10px; padding:10px 12px; cursor:pointer; box-shadow:0 10px 30px rgba(29,185,84,0.12); font-weight:700; transition:transform .15s; }
+    .btn-play:active { transform:scale(.98); }
+    .btn-aux { background:transparent; color:#cfe9d9; border:1px solid rgba(255,255,255,0.04); padding:8px 10px; border-radius:8px; cursor:pointer; }
+    .progress-row { display:flex; align-items:center; gap:12px; width:100%; }
+    .time { font-size:0.82rem; color:var(--muted); width:48px; text-align:center; flex-shrink:0; }
+    .progress { -webkit-appearance:none; appearance:none; height:8px; border-radius:8px; background:linear-gradient(90deg, rgba(29,185,84,0.35), rgba(29,185,84,0.12)); width:100%; outline:none; cursor:pointer; }
+    .progress::-webkit-slider-thumb { -webkit-appearance:none; width:14px; height:14px; border-radius:50%; background:var(--accent); box-shadow:0 4px 12px rgba(29,185,84,0.25); cursor:pointer; border:2px solid #0b0d0f; }
+    .volume { display:flex; align-items:center; gap:8px; min-width:160px; }
+    .volume input[type="range"] { width:110px; }
+    .viz-canvas { width:160px; height:48px; background:transparent; display:block; }
+    .cookie-bar { position:fixed; bottom:15px; left:50%; transform:translateX(-50%); background:var(--card); border:1px solid var(--glass-border); border-radius:16px; backdrop-filter:blur(10px); padding:12px 18px; display:flex; align-items:center; gap:14px; font-size:0.92rem; color:#dfe; box-shadow:0 10px 30px rgba(0,0,0,0.45); z-index:9999; }
+    .cookie-controls button { background:var(--accent); color:#fff; border:none; border-radius:8px; padding:8px 12px; cursor:pointer; }
+    .cookie-controls button:hover { filter:brightness(.95); transform:translateY(-1px); }
+    .player-overlay { position:absolute; inset:0; background:linear-gradient(180deg, rgba(6,8,10,0.6), rgba(6,8,10,0.55)); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:10px; color:#fff; text-align:center; padding:12px; backdrop-filter: blur(4px); }
+    .player-overlay p { color:#e7e7e7; font-size:0.95rem; }
+    .player-overlay small { color:var(--muted); font-size:0.82rem; }
+    @media (max-width:720px){ .player { flex-direction:column; align-items:stretch; gap:10px; padding:10px; } .meta { gap:8px; } .viz-canvas { display:none; } .volume { min-width:unset; justify-content:flex-end; } }
 
-    /* ===== MUSIC TOGGLE (SEPARATE) ===== */
-    #music-toggle {
-      position:fixed;
-      right:20px;
-      bottom:20px;
-      z-index:10000;
-      display:none;
-      background:#1db954;
-      color:#fff;
-      border:none;
-      border-radius:12px;
-      padding:10px 14px;
-      cursor:pointer;
-      box-shadow:0 6px 18px rgba(0,0,0,0.3);
-      font-size:0.95rem;
-    }
-    #music-toggle:active {transform:scale(0.98);}
   </style>
 </head>
 <body>
@@ -98,14 +104,103 @@
 
   <!-- Header -->
   <header class="hero-header">
-    <img src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/DSC_0992.jpg" alt="Sintu Profile Picture" class="profile-pic">
+    <img src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/DSC_0992.jpg" alt="Sintu Profile Picture" class="profile-pic" />
     <h1>Sintu Singh</h1>
     <p class="tagline">Trading dreams in digital gold.</p>
-    <p class="subtitle">💻 Digital Creator | Crypto Trader | Web Innovator<br>Building value from chaos, one trade at a time.</p>
+    <p class="subtitle">💻 Digital Creator | Crypto Trader | Web Innovator — Building value from chaos, one trade at a time.</p>
   </header>
 
+  <!-- Inline Social Icons (inserted as requested) -->
+  <div class="social-row" aria-label="Follow Sintu on social media">
+    <a class="social" href="https://github.com/soulsync-cpu" target="_blank" rel="noopener noreferrer" data-name="GitHub" aria-label="GitHub">
+      <!-- GitHub SVG -->
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12.01c0 5.08 3.29 9.38 7.86 10.9.57.11.78-.25.78-.55 0-.27-.01-1-.01-1.96-3.2.7-3.88-1.42-3.88-1.42-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.67 1.24 3.32.95.1-.74.4-1.24.73-1.52-2.56-.29-5.25-1.28-5.25-5.71 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39 11.1 11.1 0 0 1 2.9.39c2.2-1.5 3.17-1.18 3.17-1.18.62 1.58.23 2.75.12 3.04.74.81 1.18 1.84 1.18 3.1 0 4.44-2.7 5.41-5.27 5.7.41.36.78 1.08.78 2.18 0 1.57-.01 2.83-.01 3.21 0 .31.21.67.79.55A11.52 11.52 0 0 0 23.5 12.01C23.5 5.65 18.35.5 12 .5z"/></svg>
+    </a>
+
+    <a class="social" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" data-name="YouTube" aria-label="YouTube">
+      <!-- YouTube SVG -->
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2s-.2-1.7-.8-2.4c-.7-.9-1.5-.9-1.9-1-2.7-.2-6.8-.2-6.8-.2h-.1s-4.2 0-6.8.2c-.4.1-1.2.1-1.9 1-.6.7-.8 2.4-.8 2.4S3 8 3 9.8v4.4C3 16 3.2 17.7 3.2 17.7s.2 1.7.8 2.4c.7.9 1.7.9 2.1 1 1.5.1 6.3.2 6.3.2s4.2 0 6.8-.2c.4-.1 1.2-.1 1.9-1 .6-.7.8-2.4.8-2.4s.2-1.7.2-3.5V9.8c0-1.8-.2-3.6-.2-3.6zM9.8 15.7V8.9l6.2 3.4-6.2 3.4z"/></svg>
+    </a>
+
+    <a class="social" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" data-name="Facebook" aria-label="Facebook">
+      <!-- Facebook SVG -->
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07C2 17.1 5.66 21.3 10.44 22v-7.02H7.9v-2.9h2.54V9.5c0-2.5 1.5-3.88 3.77-3.88 1.09 0 2.23.19 2.23.19v2.45h-1.25c-1.23 0-1.61.77-1.61 1.56v1.87h2.74l-.44 2.9h-2.3V22C18.34 21.3 22 17.1 22 12.07z"/></svg>
+    </a>
+
+    <a class="social" href="https://instagram.com/" target="_blank" rel="noopener noreferrer" data-name="Instagram" aria-label="Instagram">
+      <!-- Instagram SVG -->
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.2A4.8 4.8 0 1 0 16.8 13 4.8 4.8 0 0 0 12 8.2zm6.4-2.6a1.2 1.2 0 1 0 1.2 1.2 1.2 1.2 0 0 0-1.2-1.2zM12 10.8A1.2 1.2 0 1 1 10.8 9.6 1.2 1.2 0 0 1 12 10.8z"/></svg>
+    </a>
+
+    <a class="social" href="https://kick.com/" target="_blank" rel="noopener noreferrer" data-name="Kick" aria-label="Kick">
+      <!-- Kick (generic) SVG -->
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm2.3 14.6h-2.6v-3.2H8.9V9.6h5.4v7z"/></svg>
+    </a>
+
+    <a class="social" href="https://t.me/profit_pro_tip" target="_blank" rel="noopener noreferrer" data-name="Telegram" aria-label="Telegram">
+      <!-- Telegram SVG -->
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.4 7.2l-1.9 9.1c-.1.4-.4.5-.9.3-.5-.2-2.9-1-4.9-1.9-2.3-1.1-2.3-1.1-2.1-1.7l.4-1.4 3.9 2.8c.2.2.4.1.6-.1l7-6.4c.3-.3 0-.5-.4-.3L7.5 14.6 5.2 12.9c-.4-.3-.4-.6.2-.9L18.4 9.1c.4-.1.8.1.6.8z"/></svg>
+    </a>
+
+    <a class="social" href="https://discord.gg/" target="_blank" rel="noopener noreferrer" data-name="Discord" aria-label="Discord">
+      <!-- Discord SVG -->
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.6 4.3a19 19 0 0 0-4.6-1.4.1.1 0 0 0-.1.1c-.2.9-.4 1.9-.6 2.8-1.9-.3-3.8-.3-5.7 0-.2-.9-.4-1.9-.6-2.8 0-.1-.1-.1-.1-.1a19 19 0 0 0-4.6 1.4C2.7 9.6 2 14 3.2 18l.1.2c2.9 2.2 5.7 3.4 8.9 3.8.3 0 .4-.1.5-.3.6-1.1 1.1-2.2 1.6-3.4-2.2-.9-3.3-2.1-3.3-2.1 0 0 .6.3 1.6.7 3.1 1.1 6.5 1.1 9.6 0 1-.4 1.6-.7 1.6-.7s-1.1 1.2-3.3 2.1c.5 1.2 1 2.3 1.6 3.4.1.2.2.3.5.3 3.2-.3 6-1.6 8.9-3.8 1.2-4 0-8.4-3.2-13.7z"/></svg>
+    </a>
+  </div>
+
+  <!-- Inline Player -->
+  <div class="player-wrap" aria-hidden="false">
+    <div class="player" id="player">
+      <div class="art" aria-hidden="true">
+        <img id="art-img" src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/DSC_0992.jpg" alt="Album art" />
+      </div>
+
+      <div class="meta">
+        <div class="meta-top">
+          <div style="min-width:0;">
+            <div class="title" id="track-title">Legacy — Background Music</div>
+            <div class="artist" id="track-artist">Sintu's Collection</div>
+          </div>
+
+          <div class="controls" role="group" aria-label="Playback controls">
+            <button class="btn-play" id="play-btn" aria-pressed="false" aria-label="Play">▶</button>
+            <button class="btn-aux" id="prev-btn" title="Previous" style="display:none">⟲</button>
+            <button class="btn-aux" id="next-btn" title="Next" style="display:none">⟳</button>
+          </div>
+        </div>
+
+        <div class="progress-row" style="align-items:center;">
+          <div class="time" id="time-elapsed">0:00</div>
+          <input class="progress" id="seek" type="range" min="0" max="100" step="0.1" value="0" aria-label="Seek" />
+          <div class="time" id="time-duration">0:00</div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <button class="btn-aux" id="mute-btn" aria-pressed="false" aria-label="Mute">🔊</button>
+            <div class="volume">
+              <input id="volume" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="Volume" />
+            </div>
+          </div>
+
+          <canvas id="viz" class="viz-canvas" width="160" height="48" aria-hidden="true"></canvas>
+        </div>
+      </div>
+
+      <!-- overlay shown when cookies not accepted -->
+      <div class="player-overlay" id="player-overlay" style="display:none;">
+        <p>Background music is disabled until you enable cookies or permit audio.</p>
+        <small>Click "Enable Music" to accept and start playback (this stores a local preference).</small>
+        <div style="display:flex; gap:8px; margin-top:6px;">
+          <button id="enable-music" class="btn-play">Enable Music</button>
+          <button id="overlay-dismiss" class="btn-aux">Maybe later</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Links Section -->
-  <section class="links">
+  <section class="links" aria-label="Links">
     <div class="link-item">
       <a href="https://www.linkedin.com/services/page/a2a5a332bb266061a8/" class="link-btn" target="_blank">LinkedIn</a>
       <p>Let’s connect professionally — check out my services and hire me.</p>
@@ -126,130 +221,232 @@
       <a href="https://profitprotip.blogspot.com/" class="link-btn" target="_blank">ProfitProTip Blog</a>
       <p>Explore my strategy insights, and success highlights.</p>
     </div>
-    <div class="link-item">
-      <a href="https://rsx.rf.gd/" class="link-btn" target="_blank">RSX Exchange</a>
-      <p>Explore RSX — crypto experiments & P2P trading vision.</p>
-    </div>
-    <div class="link-item">
-      <a href="https://rsxin.gumroad.com/l/profit" class="link-btn" target="_blank">Profit Product (PAID)</a>
-      <p>Access tools and content focused on financial growth.</p>
-    </div>
-    <div class="link-item">
-      <a href="https://rsxin.gumroad.com/l/crypto" class="link-btn" target="_blank">Crypto Product (PAID)</a>
-      <p>Download resources and insights to level up your crypto game.</p>
-    </div>
   </section>
 
-<footer>
-  <!-- Cookie / Music Bar -->
-  <div id="cookie-bar" class="cookie-bar" role="dialog" aria-live="polite">
-    <p>🎵 This site uses cookies & background music. By continuing, you agree.</p>
-    <div class="cookie-controls">
-      <button id="accept-cookies" aria-label="Accept cookies and play music">Accept</button>
+  <footer>
+    <!-- Cookie Bar -->
+    <div id="cookie-bar" class="cookie-bar" role="dialog" aria-live="polite">
+      <div style="max-width:640px;">
+        <strong>🎵 This site uses cookies & background music.</strong>
+        <div style="color:var(--muted); margin-top:4px; font-size:.9rem;">We store a local preference to remember your choice. By continuing you agree to this behavior.</div>
+      </div>
+      <div class="cookie-controls">
+        <button id="accept-cookies">Accept</button>
+      </div>
     </div>
-  </div>
 
-  <!-- Music Toggle (moved out of cookie bar so it can be shown independently) -->
-  <button id="music-toggle" aria-label="Toggle background music">🔊 Play Music</button>
+    <!-- audio element (hidden) -->
+    <audio id="bg-music" loop preload="auto" crossorigin="anonymous">
+      <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy.mp3" type="audio/mpeg" />
+    </audio>
+  </footer>
 
-  <!-- Music -->
-  <audio id="bg-music" loop>
-    <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy.mp3" type="audio/mpeg">
-  </audio>
-</footer>
+<script>
+  // Elements
+  const music = document.getElementById('bg-music');
+  const playBtn = document.getElementById('play-btn');
+  const seek = document.getElementById('seek');
+  const elapsed = document.getElementById('time-elapsed');
+  const durationEl = document.getElementById('time-duration');
+  const volume = document.getElementById('volume');
+  const muteBtn = document.getElementById('mute-btn');
+  const vizCanvas = document.getElementById('viz');
+  const vizCtx = vizCanvas.getContext('2d');
+  const playerOverlay = document.getElementById('player-overlay');
+  const enableMusicBtn = document.getElementById('enable-music');
+  const overlayDismiss = document.getElementById('overlay-dismiss');
+  const cookieBar = document.getElementById('cookie-bar');
+  const acceptCookiesBtn = document.getElementById('accept-cookies');
+  const trackTitle = document.getElementById('track-title');
+  const trackArtist = document.getElementById('track-artist');
 
-  <script>
-    // Elements
-    const music = document.getElementById('bg-music');
-    const musicToggle = document.getElementById('music-toggle');
-    const cookieBar = document.getElementById('cookie-bar');
-    const acceptBtn = document.getElementById('accept-cookies');
+  // Visualizer setup (Web Audio API)
+  let audioCtx, analyser, sourceNode, dataArray, rafId;
+  function setupVisualizer() {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      analyser = audioCtx.createAnalyser();
+      analyser.fftSize = 128;
+      const bufferLength = analyser.frequencyBinCount;
+      dataArray = new Uint8Array(bufferLength);
 
-    // Helper to update music toggle UI
-    function updateMusicButton() {
-      musicToggle.style.display = 'inline-block';
-      musicToggle.textContent = music.paused ? '🔊 Play Music' : '🔇 Pause Music';
+      sourceNode = audioCtx.createMediaElementSource(music);
+      sourceNode.connect(analyser);
+      analyser.connect(audioCtx.destination);
     }
+  }
 
-    // Initialize: check localStorage for acceptance
-    const cookieAccepted = localStorage.getItem('cookieAccepted') === 'true';
+  function drawViz() {
+    if (!analyser) return;
+    analyzerLoop();
+    function analyzerLoop() {
+      analyser.getByteFrequencyData(dataArray);
+      const w = vizCanvas.width;
+      const h = vizCanvas.height;
+      vizCtx.clearRect(0,0,w,h);
+      const barCount = Math.min(20, dataArray.length);
+      const barWidth = w / barCount;
+      for (let i = 0; i < barCount; i++) {
+        const val = dataArray[i];
+        const percent = val / 255;
+        const barHeight = percent * h;
+        const x = i * barWidth;
+        const gradient = vizCtx.createLinearGradient(x,0,x+h,0);
+        gradient.addColorStop(0, "rgba(29,185,84,0.95)");
+        gradient.addColorStop(1, "rgba(29,185,84,0.3)");
+        vizCtx.fillStyle = gradient;
+        vizCtx.fillRect(x + 2, h - barHeight, barWidth - 4, barHeight);
+      }
+      rafId = requestAnimationFrame(analyzerLoop);
+    }
+  }
 
-    if (cookieAccepted) {
-      // Hide cookie prompt
-      cookieBar.style.display = 'none';
+  function stopViz() {
+    if (rafId) cancelAnimationFrame(rafId);
+    vizCtx.clearRect(0,0,vizCanvas.width, vizCanvas.height);
+  }
 
-      // Try to autoplay. If blocked by the browser, just show the toggle so user can start playback.
-      music.play().then(() => {
-        updateMusicButton();
-      }).catch((err) => {
-        // Autoplay was probably blocked — show the toggle so the user can start playback
-        console.warn('Autoplay blocked or failed:', err);
-        updateMusicButton();
-      });
+  // Helpers for time formatting
+  function formatTime(s) {
+    if (!isFinite(s)) return '0:00';
+    const minutes = Math.floor(s / 60);
+    const seconds = Math.floor(s % 60).toString().padStart(2,'0');
+    return `${minutes}:${seconds}`;
+  }
+
+  // Local storage cookie flag
+  function isCookieAccepted() {
+    return localStorage.getItem('cookieAccepted') === 'true';
+  }
+
+  function showCookieBar(show) {
+    cookieBar.style.display = show ? 'flex' : 'none';
+  }
+
+  // Update UI
+  function updatePlayUI() {
+    const isPaused = music.paused;
+    playBtn.textContent = isPaused ? '▶' : '⏸';
+    playBtn.setAttribute('aria-pressed', String(!isPaused));
+    if (!isPaused) {
+      drawViz();
     } else {
-      // Show cookie prompt and keep music toggle hidden until user accepts
-      cookieBar.style.display = 'flex';
-      musicToggle.style.display = 'none';
+      stopViz();
     }
+  }
 
-    // Accept cookies button — this is a user gesture and should allow playback
-    acceptBtn.addEventListener('click', () => {
-      localStorage.setItem('cookieAccepted', 'true');
-      cookieBar.style.display = 'none';
-      // Attempt to play (user gesture). If it fails, still show the toggle for manual start.
-      music.play().then(() => {
-        updateMusicButton();
-      }).catch((err) => {
-        console.warn('Play failed after accept:', err);
-        updateMusicButton();
-      });
+  // Try to autoplay if allowed
+  function attemptAutoplay() {
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume().catch(()=>{});
+    }
+    music.play().then(() => {
+      updatePlayUI();
+    }).catch(err => {
+      console.warn('Autoplay blocked or failed:', err);
+      updatePlayUI();
+    });
+  }
+
+  // Initialize states
+  function initPlayer() {
+    music.volume = parseFloat(volume.value);
+    music.addEventListener('loadedmetadata', () => {
+      seek.max = Math.max(0, music.duration);
+      durationEl.textContent = formatTime(music.duration);
     });
 
-    // Music toggle click handler
-    musicToggle.addEventListener('click', () => {
-      if (music.paused) {
-        music.play().then(() => {
-          updateMusicButton();
-        }).catch(err => {
-          console.warn('Play failed:', err);
-        });
+    music.addEventListener('timeupdate', () => {
+      seek.value = music.currentTime;
+      elapsed.textContent = formatTime(music.currentTime);
+      if (isFinite(music.duration)) durationEl.textContent = formatTime(music.duration);
+    });
+
+    music.addEventListener('play', () => { updatePlayUI(); });
+    music.addEventListener('pause', () => { updatePlayUI(); });
+
+    let seeking = false;
+    seek.addEventListener('input', () => {
+      elapsed.textContent = formatTime(seek.value);
+      seeking = true;
+    });
+    seek.addEventListener('change', () => {
+      music.currentTime = seek.value;
+      seeking = false;
+    });
+
+    playBtn.addEventListener('click', async () => {
+      if (!isCookieAccepted()) {
+        localStorage.setItem('cookieAccepted', 'true');
+        showCookieBar(false);
+        playerOverlay.style.display = 'none';
+      }
+      setupVisualizer();
+      try {
+        if (audioCtx && audioCtx.state === 'suspended') await audioCtx.resume();
+        if (music.paused) await music.play();
+        else music.pause();
+      } catch (err) {
+        console.warn('Play failed:', err);
+      }
+    });
+
+    volume.addEventListener('input', () => {
+      music.volume = parseFloat(volume.value);
+      if (music.volume === 0) {
+        muteBtn.textContent = '🔈';
+        muteBtn.setAttribute('aria-pressed','true');
       } else {
-        music.pause();
-        updateMusicButton();
+        muteBtn.textContent = '🔊';
+        muteBtn.setAttribute('aria-pressed','false');
       }
     });
 
-    // Floating Stars
-    const canvas = document.getElementById('star-bg');
-    const ctx = canvas.getContext('2d');
-    let stars = [];
-
-    function resizeCanvas(){canvas.width=window.innerWidth; canvas.height=window.innerHeight;}
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    function initStars(){
-      stars=[];
-      for(let i=0;i<120;i++){
-        stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.5+0.5,speed:Math.random()*0.5+0.1});
+    muteBtn.addEventListener('click', () => {
+      if (music.muted) {
+        music.muted = false;
+        muteBtn.textContent = '🔊';
+        muteBtn.setAttribute('aria-pressed','false');
+        volume.value = music.volume || 0.8;
+      } else {
+        music.muted = true;
+        muteBtn.textContent = '🔈';
+        muteBtn.setAttribute('aria-pressed','true');
       }
+    });
+
+    enableMusicBtn.addEventListener('click', () => {
+      localStorage.setItem('cookieAccepted','true');
+      showCookieBar(false);
+      playerOverlay.style.display = 'none';
+      setupVisualizer();
+      attemptAutoplay();
+    });
+    overlayDismiss.addEventListener('click', () => {
+      playerOverlay.style.display = 'none';
+    });
+
+    acceptCookiesBtn.addEventListener('click', () => {
+      localStorage.setItem('cookieAccepted','true');
+      showCookieBar(false);
+      playerOverlay.style.display = 'none';
+      setupVisualizer();
+      attemptAutoplay();
+    });
+
+    if (isCookieAccepted()) {
+      showCookieBar(false);
+      playerOverlay.style.display = 'none';
+      setupVisualizer();
+      attemptAutoplay();
+    } else {
+      showCookieBar(true);
+      playerOverlay.style.display = 'flex';
     }
 
-    function drawStars(){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      ctx.fillStyle='#fff';
-      stars.forEach(star=>{
-        ctx.beginPath();
-        ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
-        ctx.fill();
-        star.y-=star.speed;
-        if(star.y<0) star.y=canvas.height;
-      });
-      requestAnimationFrame(drawStars);
-    }
+    playBtn.addEventListener('keydown', (e) => {
+      if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); playBtn.click(); }
+    });
+  }
 
-    initStars();
-    drawStars();
-  </script>
-</body>
-</html>
+  (function star
