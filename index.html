@@ -3,107 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sintu | Digital Creator</title>
-  
-  <!-- Basic SEO -->
-  <meta name="description" content="Sintu Singh — A Digital Creator crafting visions into web experiences, crypto tools, and creative ideas." />
-  <meta name="keywords" content="Sintu, RSX, ProfitProTip, crypto, digital creator, web developer, blockchain, portfolio" />
-  <meta name="author" content="Sintu Singh" />
+  <title>Sintu Singh | Digital Creator</title>
 
-  <!-- Security & Browser Trust -->
+  <!-- SEO & Social -->
+  <meta name="description" content="Sintu Singh — Trading dreams in digital gold. Digital Creator & Crypto Trader." />
+  <meta name="author" content="Sintu Singh" />
+  <meta property="og:title" content="Sintu Singh | Digital Creator">
+  <meta property="og:description" content="Trading dreams in digital gold.">
+  <meta property="og:image" content="DSC_0992.jpg">
+  <meta property="og:url" content="https://your-netlify-site.netlify.app">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Security -->
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
-  <!-- Open Graph / Social Preview -->
-  <meta property="og:title" content="Sintu Singh | Digital Creator">
-  <meta property="og:description" content="Turning ideas into impact. Explore my digital world.">
-  <meta property="og:image" content="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/DSC_0992.jpg">
-  <meta property="og:url" content="https://sintu.netlify.app/">
-  <meta name="twitter:card" content="summary_large_image">
-
   <!-- Favicon -->
-  <link rel="icon" href="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/DSC_0992.jpg" type="image/jpeg" />
-   <!-- Styles -->
-  <link rel="stylesheet" href="styles.css" />
-  <script src="script.js" defer></script>
+  <link rel="icon" href="DSC_0992.jpg" type="image/jpeg">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Background Canvas for particles -->
-  <canvas id="bgCanvas"></canvas>
 
+  <!-- Header -->
   <header class="hero-header">
-  <img src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/DSC_0992.jpg" alt="Sintu Profile Picture" class="profile-pic animate-fade">
-  
-  <h1 class="animate-slide">Sintu Singh</h1>
-  
-  <p class="tagline animate-fade">Crafting dreams into reality.</p>
-  
-  <p class="subtitle animate-fade-delay">
-    💻 Digital Creator | Web Innovator | Blockchain Explorer  
-    <br>
-   Trading dreams in digital gold.
-  </p>
-</header>
-<section class="links">
-  <div class="link-item">
-    <a href="https://www.linkedin.com/services/page/a2a5a332bb266061a8/" class="link-btn" target="_blank">LinkedIn</a>
-    <p>Connect with me professionally — explore my services, experience, and collaborations.</p>
+    <img src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/DSC_0992.jpg" alt="Sintu Profile Picture" class="profile-pic animate-fade">
+    <h1 class="animate-slide">Sintu Singh</h1>
+    <p class="tagline animate-fade">Trading dreams in digital gold.</p>
+    <p class="subtitle animate-fade-delay">
+      💻 Digital Creator | Crypto Trader | Web Innovator  
+      <br>
+      Building value from chaos, one trade at a time.
+    </p>
+  </header>
+
+  <!-- Links Section -->
+  <section class="links">
+    <div class="link-item">
+      <a href="https://www.linkedin.com/services/page/a2a5a332bb266061a8/" class="link-btn" target="_blank">LinkedIn</a>
+      <p>Connect professionally and explore my services and collaborations.</p>
+    </div>
+    <div class="link-item">
+      <a href="https://g.dev/rs0" class="link-btn" target="_blank">Google Dev Profile</a>
+      <p>Check verified Google Developer projects I’m building.</p>
+    </div>
+    <div class="link-item">
+      <a href="https://www.binance.com/en-IN/square/profile/nitra_x" class="link-btn" target="_blank">Binance Profile</a>
+      <p>Catch my crypto insights and trading updates.</p>
+    </div>
+    <div class="link-item">
+      <a href="https://t.me/profit_pro_tip" class="link-btn" target="_blank">Telegram Channel</a>
+      <p>Join the Telegram circle for tips, updates, and insights.</p>
+    </div>
+    <div class="link-item">
+      <a href="https://profitprotip.blogspot.com/" class="link-btn" target="_blank">Profit Pro Blog</a>
+      <p>Dive into blogs, strategy breakdowns, and success notes.</p>
+    </div>
+    <div class="link-item">
+      <a href="https://rsx.rf.gd/" class="link-btn" target="_blank">RSX Website</a>
+      <p>Explore RSX — crypto experiments & digital trading vision.</p>
+    </div>
+    <div class="link-item">
+      <a href="https://rsxin.gumroad.com/l/profit" class="link-btn" target="_blank">Profit Product</a>
+      <p>Access tools and content focused on financial growth.</p>
+    </div>
+    <div class="link-item">
+      <a href="https://rsxin.gumroad.com/l/crypto" class="link-btn" target="_blank">Crypto Product</a>
+      <p>Download resources and insights to level up your crypto game.</p>
+    </div>
+  </section>
+
+  <!-- Cookie / Music Bar -->
+  <div id="cookie-bar" class="cookie-bar">
+    <p>🎵 This site uses cookies & background music. By continuing, you agree.</p>
+    <div class="cookie-controls">
+      <button id="accept-cookies">Accept</button>
+      <button id="music-toggle">🔊 Pause Music</button>
+    </div>
   </div>
 
-  <div class="link-item">
-    <a href="https://g.dev/rs0" class="link-btn" target="_blank">Google Dev Profile</a>
-    <p>Check my verified Google Developer profile and projects I’m building in the digital space.</p>
-  </div>
+  <!-- Music -->
+  <audio id="bg-music" loop>
+    <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy.mp3" type="audio/mpeg">
+  </audio>
 
-  <div class="link-item">
-    <a href="https://www.binance.com/en-IN/square/profile/nitra_x" class="link-btn" target="_blank">Binance Profile</a>
-    <p>Catch my crypto moves, insights, and thoughts straight from my Binance Square feed.</p>
-  </div>
-
-  <div class="link-item">
-    <a href="https://t.me/profit_pro_tip" class="link-btn" target="_blank">Telegram Channel</a>
-    <p>Join the Telegram circle where I drop profit tips, updates, and daily insights.</p>
-  </div>
-
-  <div class="link-item">
-    <a href="https://profitprotip.blogspot.com/" class="link-btn" target="_blank">Profit Pro Blog</a>
-    <p>Dive into my blog — raw thoughts, strategy breakdowns, and success notes.</p>
-  </div>
-
-  <div class="link-item">
-    <a href="https://rsx.rf.gd/" class="link-btn" target="_blank">RSX Website</a>
-    <p>Explore RSX — my own crypto experiment and vision for a digital trading future.</p>
-  </div>
-
-  <div class="link-item">
-    <a href="https://rsxin.gumroad.com/l/profit" class="link-btn" target="_blank">Profit Product</a>
-    <p>Grab exclusive access to tools and content focused on mastering financial growth.</p>
-  </div>
-
-  <div class="link-item">
-    <a href="https://rsxin.gumroad.com/l/crypto" class="link-btn" target="_blank">Crypto Product</a>
-    <p>Download resources and insights to level up your crypto game and strategies.</p>
-  </div>
-</section>
-
-<!-- Cookie / Music Notice Bar -->
-<div id="cookie-bar" class="cookie-bar">
-  <p>🎵 This site uses cookies and background music for better vibes. By continuing, you agree to it.</p>
-  <div class="cookie-controls">
-    <button id="accept-cookies">Accept</button>
-    <button id="music-toggle">🔊 Pause Music</button>
-  </div>
-</div>
-
-<audio id="bg-music" loop>
-  <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy-of-baroque-cinematic-background-music-for-video-stories-1-min-416088.mp3" type="audio/mpeg">
-</audio>
- <footer>
-    <p>🔥 Designed by *Sintu* 🔥</p>
-  </footer>
-  <!-- Particle background JS -->
+  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>

@@ -54,16 +54,16 @@ const canvas = document.getElementById('bgCanvas');
     resizeCanvas();
     animateParticles();
 
-    // Music player
+    // Music and cookie logic
 const music = document.getElementById('bg-music');
 const musicToggle = document.getElementById('music-toggle');
 const cookieBar = document.getElementById('cookie-bar');
 const acceptBtn = document.getElementById('accept-cookies');
 
-// Load cookie consent
+// Check cookie consent
 if (localStorage.getItem('cookieAccepted')) {
   cookieBar.style.display = 'none';
-  music.play().catch(() => {});
+  music.play().catch(()=>{});
 }
 
 acceptBtn.addEventListener('click', () => {
@@ -72,6 +72,7 @@ acceptBtn.addEventListener('click', () => {
   music.play();
 });
 
+// Music toggle
 musicToggle.addEventListener('click', () => {
   if (music.paused) {
     music.play();
@@ -81,7 +82,3 @@ musicToggle.addEventListener('click', () => {
     musicToggle.textContent = '🎵 Play Music';
   }
 });
-    // Fade-out on page leave
-    window.addEventListener("beforeunload", ()=>{
-      document.body.style.animation="pageFadeOut 0.6s forwards";
-    });
