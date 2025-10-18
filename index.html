@@ -60,10 +60,11 @@
     /* ===== COOKIE / MUSIC BAR ===== */
     .cookie-bar {
       position:fixed; bottom:15px; left:50%; transform:translateX(-50%);
-      background:rgba(15,15,20,0.9); border:1px solid rgba(255,255,255,0.15);
+      background:rgba(15,15,20,0.95); border:1px solid rgba(255,255,255,0.15);
       border-radius:16px; backdrop-filter:blur(10px);
       padding:12px 18px; display:flex; align-items:center; gap:15px;
       font-size:0.9rem; color:#ccc; box-shadow:0 0 15px rgba(0,0,0,0.3);
+      z-index:9999;
     }
     .cookie-controls button {
       background:#1db954; color:#fff; border:none; border-radius:8px; padding:6px 12px;
@@ -126,7 +127,7 @@
     <p>🎵 This site uses cookies & background music. By continuing, you agree.</p>
     <div class="cookie-controls">
       <button id="accept-cookies">Accept</button>
-      <button id="music-toggle">🔊 Pause Music</button>
+      <button id="music-toggle" style="display:none;">🔊 Pause Music</button>
     </div>
   </div>
 
@@ -135,26 +136,30 @@
     <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- JS -->
   <script>
-    // Music + Cookie logic
+    // Elements
     const music = document.getElementById('bg-music');
     const musicToggle = document.getElementById('music-toggle');
     const cookieBar = document.getElementById('cookie-bar');
     const acceptBtn = document.getElementById('accept-cookies');
 
+    // Show/hide based on localStorage
     if(localStorage.getItem('cookieAccepted')){
       cookieBar.style.display = 'none';
+      musicToggle.style.display = 'inline-block';
       music.play().catch(()=>{});
     }
 
-    acceptBtn.addEventListener('click', () => {
+    // Accept cookies
+    acceptBtn.addEventListener('click', ()=>{
       localStorage.setItem('cookieAccepted', true);
       cookieBar.style.display = 'none';
+      musicToggle.style.display = 'inline-block';
       music.play().catch(()=>{});
     });
 
-    musicToggle.addEventListener('click', () => {
+    // Music toggle
+    musicToggle.addEventListener('click', ()=>{
       if(music.paused){
         music.play().catch(()=>{});
         musicToggle.textContent = '🔊 Pause Music';
@@ -169,34 +174,26 @@
     const ctx = canvas.getContext('2d');
     let stars = [];
 
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
+    function resizeCanvas(){canvas.width=window.innerWidth; canvas.height=window.innerHeight;}
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    function initStars() {
-      stars = [];
+    function initStars(){
+      stars=[];
       for(let i=0;i<120;i++){
-        stars.push({
-          x: Math.random()*canvas.width,
-          y: Math.random()*canvas.height,
-          r: Math.random()*1.5+0.5,
-          speed: Math.random()*0.5+0.1
-        });
+        stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.5+0.5,speed:Math.random()*0.5+0.1});
       }
     }
 
-    function drawStars() {
+    function drawStars(){
       ctx.clearRect(0,0,canvas.width,canvas.height);
-      ctx.fillStyle = '#fff';
+      ctx.fillStyle='#fff';
       stars.forEach(star=>{
         ctx.beginPath();
         ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
         ctx.fill();
-        star.y -= star.speed;
-        if(star.y < 0) star.y = canvas.height;
+        star.y-=star.speed;
+        if(star.y<0) star.y=canvas.height;
       });
       requestAnimationFrame(drawStars);
     }
