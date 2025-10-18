@@ -4,6 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sintu | Digital Creator</title>
+  
+  <!-- Basic SEO -->
+  <meta name="description" content="Sintu Singh — A Digital Creator crafting visions into web experiences, crypto tools, and creative ideas." />
+  <meta name="keywords" content="Sintu, RSX, ProfitProTip, crypto, digital creator, web developer, blockchain, portfolio" />
+  <meta name="author" content="Sintu Singh" />
+
+  <!-- Security & Browser Trust -->
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:title" content="Sintu Singh | Digital Creator">
+  <meta property="og:description" content="Turning ideas into impact. Explore my digital world.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/DSC_0992.jpg">
+  <meta property="og:url" content="https://sintu.netlify.app/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/DSC_0992.jpg" type="image/jpeg" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
 
@@ -301,9 +322,10 @@
 
   <div class="music-player">
   <button id="music-toggle">⏸</button>
-  <audio id="bg-music" loop autoplay>
-    <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy-of-baroque-cinematic-background-music-for-video-stories-1-min-416088.mp3" type="audio/mpeg">
-  </audio>
+ <audio id="bg-music" autoplay loop>
+  <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy-of-baroque-cinematic-background-music-for-video-stories-1-min-416088.mp3" type="audio/mpeg">
+</audio>
+<button id="music-toggle">🔊 Pause Music</button>
 </div>
 
   <!-- Particle background JS -->
@@ -365,28 +387,16 @@
     animateParticles();
 
     // Music player
-    const music = document.getElementById("bg-music");
-const toggleBtn = document.getElementById("music-toggle");
+const music = document.getElementById('bg-music');
+const toggleBtn = document.getElementById('music-toggle');
 
-// Try to play automatically
-music.volume = 0.5; // optional, start at 50% volume
-music.play().catch(()=> {
-  // Browser blocked autoplay
-  toggleBtn.textContent = "▶"; // show play button
-});
-
-let playing = !music.paused;
-
-// Toggle play/pause
-toggleBtn.addEventListener("click", ()=>{
-  if(playing){
-    music.pause();
-    toggleBtn.textContent = "▶";
-    playing = false;
-  } else{
+toggleBtn.addEventListener('click', () => {
+  if (music.paused) {
     music.play();
-    toggleBtn.textContent = "⏸";
-    playing = true;
+    toggleBtn.textContent = '🔊 Pause Music';
+  } else {
+    music.pause();
+    toggleBtn.textContent = '🎵 Play Music';
   }
 });
     // Fade-out on page leave
