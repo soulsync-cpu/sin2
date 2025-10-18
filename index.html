@@ -27,7 +27,90 @@
   <link rel="icon" href="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/DSC_0992.jpg" type="image/jpeg" />
 
   <!-- Styles -->
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    .links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 2rem 0;
+}
+
+.link-item {
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.link-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+}
+
+.link-btn {
+  display: inline-block;
+  font-size: 1.1rem;
+  color: #00ffd1;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.link-btn:hover {
+  color: #ffd700;
+}
+
+.link-item p {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Cookie Bar */
+.cookie-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(20, 20, 20, 0.9);
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 999;
+  animation: slideUp 1s ease forwards;
+}
+
+.cookie-controls button {
+  background: #00ffd1;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.cookie-controls button:hover {
+  background: #ffd700;
+  color: #000;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+  </style>
 </head>
 <body>
 
@@ -155,6 +238,33 @@ function initStars(){stars=[]; for(let i=0;i<120;i++){stars.push({x:Math.random(
 function drawStars(){ctx.clearRect(0,0,canvas.width,canvas.height); ctx.fillStyle='#fff'; stars.forEach(star=>{ctx.beginPath();ctx.arc(star.x,star.y,star.r,0,Math.PI*2);ctx.fill(); star.y-=star.speed; if(star.y<0) star.y=canvas.height;}); requestAnimationFrame(drawStars);}
 initStars();
 drawStars();
+
+const music = document.getElementById('bg-music');
+const musicToggle = document.getElementById('music-toggle');
+const cookieBar = document.getElementById('cookie-bar');
+const acceptBtn = document.getElementById('accept-cookies');
+
+// Load cookie consent
+if (localStorage.getItem('cookieAccepted')) {
+  cookieBar.style.display = 'none';
+  music.play().catch(() => {});
+}
+
+acceptBtn.addEventListener('click', () => {
+  localStorage.setItem('cookieAccepted', true);
+  cookieBar.style.display = 'none';
+  music.play();
+});
+
+musicToggle.addEventListener('click', () => {
+  if (music.paused) {
+    music.play();
+    musicToggle.textContent = '🔊 Pause Music';
+  } else {
+    music.pause();
+    musicToggle.textContent = '🎵 Play Music';
+  }
+});
 
 </script>
 </body>
