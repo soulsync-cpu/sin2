@@ -130,20 +130,46 @@ body{
     </div>
   </section>
 
-  <!-- Cookie / Music Bar -->
-<div id="cookie-bar" class="cookie-bar">
-  <p>🎵 This site uses cookies & background music. By continuing, you agree.</p>
-  <div class="cookie-controls">
-    <button id="accept-cookies">Accept</button>
-    <button id="music-toggle">🔊 Pause Music</button>
-  </div>
+  <div class="music-player">
+  <button id="music-toggle">⏸</button>
+  <audio id="bg-music" loop autoplay>
+    <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy-of-baroque-cinematic-background-music-for-video-stories-1-min-416088.mp3" type="audio/mpeg">
+  </audio>
 </div>
 
-<!-- Music -->
-<audio id="bg-music" loop>
-  <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy.mp3" type="audio/mpeg">
-</audio>
+<script>
+const music = document.getElementById("bg-music");
+const toggleBtn = document.getElementById("music-toggle");
 
+// Try to play automatically
+music.volume = 0.5; // optional, start at 50% volume
+music.play().catch(()=> {
+  // Browser blocked autoplay
+  toggleBtn.textContent = "▶"; // show play button
+});
+
+let playing = !music.paused;
+
+// Toggle play/pause
+toggleBtn.addEventListener("click", ()=>{
+  if(playing){
+    music.pause();
+    toggleBtn.textContent = "▶";
+    playing = false;
+  } else{
+    music.play();
+    toggleBtn.textContent = "⏸";
+    playing = true;
+  }
+});
+</script>
+  <!-- Cookie Consent Bar -->
+  <div class="cookie-bar" id="cookie-bar">
+    <span>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</span>
+    <div class="cookie-controls">
+      <button id="accept-cookies">Accept Cookies & Play Music</button>
+    </div>
+  </div>
 <!-- JS -->
 <script>
   // Music + Cookie logic
