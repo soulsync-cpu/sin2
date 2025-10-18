@@ -164,47 +164,86 @@
     }
 
     .links {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      width: 90%;
-      max-width: 450px;
-      animation: floatUp 1.5s ease-out 0.8s both;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 2rem 0;
+}
 
-    .link-btn {
-      width: 100%;
-      padding: 15px 20px;
-      border-radius: 15px;
-      text-align: center;
-      background: var(--glass);
-      color: var(--text);
-      text-decoration: none;
-      backdrop-filter: blur(10px);
-      font-weight: 600;
-      border: 1px solid rgba(255,255,255,0.2);
-      box-shadow: 0 0 15px rgba(0,255,163,0.2);
-      transition: all 0.3s ease;
-    }
-
-    .link-btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 0 25px var(--pink),0 0 25px var(--gold);
-      border: 1px solid var(--mint);
-    }
-    .link-item {
-  margin-bottom: 1.5rem;
+.link-item {
+  width: 90%;
+  max-width: 500px;
   text-align: center;
-  animation: fadeInUp 1s ease forwards;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.link-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+}
+
+.link-btn {
+  display: inline-block;
+  font-size: 1.1rem;
+  color: #00ffd1;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.link-btn:hover {
+  color: #ffd700;
 }
 
 .link-item p {
-  margin-top: 0.5rem;
   font-size: 0.9rem;
   color: #ccc;
 }
 
+/* Cookie Bar */
+.cookie-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(20, 20, 20, 0.9);
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 999;
+  animation: slideUp 1s ease forwards;
+}
+
+.cookie-controls button {
+  background: #00ffd1;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.cookie-controls button:hover {
+  background: #ffd700;
+  color: #000;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
     footer {
       position: absolute;
       bottom: 10px;
@@ -271,12 +310,6 @@
     Turning simple ideas into living experiences — pixel by pixel.
   </p>
 </header>
-<div class="music-player">
-  <button id="music-toggle">⏸🔊▶</button>
- <audio id="bg-music" autoplay loop>
-  <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy-of-baroque-cinematic-background-music-for-video-stories-1-min-416088.mp3" type="audio/mpeg">
-</audio>
-</div>
 <section class="links">
   <div class="link-item">
     <a href="https://www.linkedin.com/services/page/a2a5a332bb266061a8/" class="link-btn" target="_blank">LinkedIn</a>
@@ -318,6 +351,19 @@
     <p>Download resources and insights to level up your crypto game and strategies.</p>
   </div>
 </section>
+
+<!-- Cookie / Music Notice Bar -->
+<div id="cookie-bar" class="cookie-bar">
+  <p>🎵 This site uses cookies and background music for better vibes. By continuing, you agree to it.</p>
+  <div class="cookie-controls">
+    <button id="accept-cookies">Accept</button>
+    <button id="music-toggle">🔊 Pause Music</button>
+  </div>
+</div>
+
+<audio id="bg-music" loop>
+  <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy-of-baroque-cinematic-background-music-for-video-stories-1-min-416088.mp3" type="audio/mpeg">
+</audio>
 
 
   <footer>
@@ -384,15 +430,29 @@
 
     // Music player
 const music = document.getElementById('bg-music');
-const toggleBtn = document.getElementById('music-toggle');
+const musicToggle = document.getElementById('music-toggle');
+const cookieBar = document.getElementById('cookie-bar');
+const acceptBtn = document.getElementById('accept-cookies');
 
-toggleBtn.addEventListener('click', () => {
+// Load cookie consent
+if (localStorage.getItem('cookieAccepted')) {
+  cookieBar.style.display = 'none';
+  music.play().catch(() => {});
+}
+
+acceptBtn.addEventListener('click', () => {
+  localStorage.setItem('cookieAccepted', true);
+  cookieBar.style.display = 'none';
+  music.play();
+});
+
+musicToggle.addEventListener('click', () => {
   if (music.paused) {
     music.play();
-    toggleBtn.textContent = '🔊 Pause Music';
+    musicToggle.textContent = '🔊 Pause Music';
   } else {
     music.pause();
-    toggleBtn.textContent = '🎵 Play Music';
+    musicToggle.textContent = '🎵 Play Music';
   }
 });
     // Fade-out on page leave
