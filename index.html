@@ -56,17 +56,66 @@
       animation: floatUp 1.5s ease-out;
     }
 
-    .profile-pic {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      border: 3px solid var(--mint);
-      box-shadow: 0 0 25px var(--pink), 0 0 15px var(--gold);
-      margin-bottom: 1rem;
-      object-fit: cover;
-      animation: pulseGlow 4s infinite alternate, floatUp 1s ease-out;
-    }
+    .hero-header {
+  text-align: center;
+  padding: 60px 20px;
+  color: #fff;
+  z-index: 2;
+  position: relative;
+}
 
+.profile-pic {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px solid #d4af37; /* gold border */
+  box-shadow: 0 0 25px rgba(255, 182, 193, 0.4);
+  object-fit: cover;
+  margin-bottom: 20px;
+  transition: transform 0.6s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: #d0ffd6; /* mint text */
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #ffb6c1; /* soft pink */
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+/* entry animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade {
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.animate-slide {
+  animation: slideIn 1.3s ease forwards;
+}
+
+.animate-fade-delay {
+  animation: fadeIn 2s ease forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
     @keyframes pulseGlow {
       0% { box-shadow: 0 0 15px var(--pink),0 0 10px var(--gold); }
       100% { box-shadow: 0 0 35px var(--mint),0 0 20px var(--gold); }
@@ -177,11 +226,20 @@
   <!-- Background Canvas for particles -->
   <canvas id="bgCanvas"></canvas>
 
-  <header>
-    <img src="https://dl.dropboxusercontent.com/s/nhswkc655w87ir2eu5si1/DSC_0992.jpg" alt="Sintu Profile Picture" class="profile-pic">
-    <h1>Sintu</h1>
-    <p>Crafting digital dreams into reality.</p>
-  </header>
+  <header class="hero-header">
+  <img src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/DSC_0992.jpg" alt="Sintu Profile Picture" class="profile-pic animate-fade">
+  
+  <h1 class="animate-slide">Sintu Singh</h1>
+  
+  <p class="tagline animate-fade">Crafting digital dreams into reality.</p>
+  
+  <p class="subtitle animate-fade-delay">
+    💻 Digital Creator | Web Innovator | Blockchain Explorer  
+    <br>
+    Turning simple ideas into living experiences — pixel by pixel.
+  </p>
+</header>
+
 
   <section class="links">
     <a href="https://www.linkedin.com/services/page/a2a5a332bb266061a8/" class="link-btn" target="_blank">LinkedIn</a>
@@ -199,11 +257,11 @@
   </footer>
 
   <div class="music-player">
-    <button id="music-toggle">▶</button>
-    <audio id="bg-music" loop>
-      <source src="https://dl.dropboxusercontent.com/s/jmp6cox1heaxe5eobosj3/legacy-of-baroque-cinematic-background-music-for-video-stories-1-min-416088.mp3" type="audio/mpeg">
-    </audio>
-  </div>
+  <button id="music-toggle">⏸</button>
+  <audio id="bg-music" loop autoplay>
+    <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy-of-baroque-cinematic-background-music-for-video-stories-1-min-416088.mp3" type="audio/mpeg">
+  </audio>
+</div>
 
   <!-- Particle background JS -->
   <script>
@@ -265,21 +323,29 @@
 
     // Music player
     const music = document.getElementById("bg-music");
-    const toggleBtn = document.getElementById("music-toggle");
-    let playing = true;
+const toggleBtn = document.getElementById("music-toggle");
 
-    toggleBtn.addEventListener("click", ()=>{
-      if(!playing){
-        music.play();
-        toggleBtn.textContent="⏸";
-        playing=true;
-      } else{
-        music.pause();
-        toggleBtn.textContent="▶";
-        playing=false;
-      }
-    });
+// Try to play automatically
+music.volume = 0.5; // optional, start at 50% volume
+music.play().catch(()=> {
+  // Browser blocked autoplay
+  toggleBtn.textContent = "▶"; // show play button
+});
 
+let playing = !music.paused;
+
+// Toggle play/pause
+toggleBtn.addEventListener("click", ()=>{
+  if(playing){
+    music.pause();
+    toggleBtn.textContent = "▶";
+    playing = false;
+  } else{
+    music.play();
+    toggleBtn.textContent = "⏸";
+    playing = true;
+  }
+});
     // Fade-out on page leave
     window.addEventListener("beforeunload", ()=>{
       document.body.style.animation="pageFadeOut 0.6s forwards";
