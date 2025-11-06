@@ -2,7 +2,7 @@
 
 Welcome to my **digital playground** — a place where creativity meets code. This is my **personal link page**, designed to showcase my profiles, projects, and creations all in one sleek, interactive experience.  
 
-![Profile Preview](https://dl.dropboxusercontent.com/s/nhswkc655w87ir2eu5si1/DSC_0992.jpg)
+![Profile Preview]([https://sintus.netlify.app/])
 
 ---
 
@@ -36,7 +36,7 @@ Welcome to my **digital playground** — a place where creativity meets code. Th
 
 This page is **hosted on Netlify**, auto-deployed via GitHub.  
 - Repository: [GitHub Repo](https://github.com/soulsync-cpu/sin2)  
-- Live site: `https://your-netlify-site.netlify.app`  
+- Live site: `[https://sintus.netlify.app/]`  
 
 Push any changes to this repo and Netlify automatically redeploys the page.
 
