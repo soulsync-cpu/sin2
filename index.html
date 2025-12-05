@@ -281,36 +281,7 @@
   <a href="https://sintus.gumroad.com/" class="link-btn" target="_blank">Book My Services</a>
   <p>Master crypto trading and earn smarter with our exclusive course & ProfitProTip membership for daily trading signal.</p>
 </div>
-    <div class="link-item" data-url="https://rsx.rf.gd/">
-  <a class="link-btn" target="_blank">Loading...</a>
-  <div class="link-preview"></div>
-  <p class="link-desc"></p>
-</div>
-
-<script>
-async function loadPreview(container) {
-    const target = container.getAttribute("data-url");
-    const api = `preview?url=${encodeURIComponent(target)}`;
-
-    try {
-        const res = await fetch(api);
-        const data = await res.json();
-
-        container.querySelector(".link-btn").textContent = data.title;
-        container.querySelector(".link-btn").href = data.url;
-
-        container.querySelector(".link-preview").innerHTML =
-          `<img src="${data.image}" style="width:100%; border-radius:8px;" />`;
-
-        container.querySelector(".link-desc").textContent = data.description;
-    } catch (err) {
-        console.log("Preview load failed:", err);
-    }
-}
-
-document.querySelectorAll(".link-item").forEach(loadPreview);
-</script>
-
+   <a href="https://rsx.rf.gd/" class="link-btn" target="_blank">Secure Crypto Exchange</a> <p>🚀 Step into RSX — your P2P trading zone. No bank freezes, no drama — just smooth exchanges every time.</p> </div>
 
     <div class="link-item">
       <a href="https://t.me/profit_pro_tip" class="link-btn" target="_blank">ProfitProTip Telegram</a>
