@@ -289,9 +289,8 @@
 
 <script>
 async function loadPreview(container) {
-    const url = container.getAttribute("data-url");
-
-    const api = `https://api.linkpreview.net/?key=54f7305219284c56975ee130dadf0235&q=${encodeURIComponent(url)}`;
+    const target = container.getAttribute("data-url");
+    const api = `preview?url=${encodeURIComponent(target)}`;
 
     try {
         const res = await fetch(api);
