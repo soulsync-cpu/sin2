@@ -254,7 +254,7 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm2.3 14.6h-2.6v-3.2H8.9V9.6h5.4v7z"/></svg>
     </a>
 
-    <a class="social" href="https://t.me/profitprotip" target="_blank" rel="noopener noreferrer" data-name="Telegram" aria-label="Telegram" style="color:#0088CC;">
+    <a class="social" href="https://t.me/sinntuu" target="_blank" rel="noopener noreferrer" data-name="Telegram" aria-label="Telegram" style="color:#0088CC;">
       <!-- Telegram SVG -->
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.4 7.2l-1.9 9.1c-.1.4-.4.5-.9.3-.5-.2-2.9-1-4.9-1.9-2.3-1.1-2.3-1.1-2.1-1.7l.4-1.4 3.9 2.8c.2.2.4.1.6-.1l7-6.4c.3-.3 0-.5-.4-.3L7.5 14.6 5.2 12.9c-.4-.3-.4-.6.2-.9L18.4 9.1c.4-.1.8.1.6.8z"/></svg>
     </a>
@@ -281,10 +281,37 @@
   <a href="https://sintus.gumroad.com/" class="link-btn" target="_blank">Book My Services</a>
   <p>Master crypto trading and earn smarter with our exclusive course & ProfitProTip membership for daily trading signal.</p>
 </div>
-     <div class="link-item">
-     <a href="https://rsx.rf.gd/" class="link-btn" target="_blank">Secure Crypto Exchange</a>
-<p>🚀 Step into RSX — your P2P trading zone. No bank freezes, no drama — just smooth exchanges every time.</p>
+    <div class="link-item" data-url="https://rsx.rf.gd/">
+  <a class="link-btn" target="_blank">Loading...</a>
+  <div class="link-preview"></div>
+  <p class="link-desc"></p>
 </div>
+
+<script>
+async function loadPreview(container) {
+    const url = container.getAttribute("data-url");
+
+    const api = `https://api.linkpreview.net/?key=54f7305219284c56975ee130dadf0235&q=${encodeURIComponent(url)}`;
+
+    try {
+        const res = await fetch(api);
+        const data = await res.json();
+
+        container.querySelector(".link-btn").textContent = data.title;
+        container.querySelector(".link-btn").href = data.url;
+
+        container.querySelector(".link-preview").innerHTML =
+          `<img src="${data.image}" style="width:100%; border-radius:8px;" />`;
+
+        container.querySelector(".link-desc").textContent = data.description;
+    } catch (err) {
+        console.log("Preview load failed:", err);
+    }
+}
+
+document.querySelectorAll(".link-item").forEach(loadPreview);
+</script>
+
 
     <div class="link-item">
       <a href="https://t.me/profit_pro_tip" class="link-btn" target="_blank">ProfitProTip Telegram</a>
