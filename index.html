@@ -210,6 +210,185 @@
     border-radius:10px;
     box-shadow:0 6px 16px rgba(0,0,0,0.35);
 }
+      :root{
+    --bg:#081018;
+    --card-bg: rgba(255,255,255,0.04);
+    --glass: rgba(255,255,255,0.06);
+    --accent1: #00f5ff;
+    --accent2: #7b61ff;
+    --accent3: #ff4da6;
+    --text: #e6eef8;
+    --muted: #b9c6d8;
+    --radius: 14px;
+  }
+
+  /* page */
+  body{
+    margin:0;
+    min-height:100vh;
+    background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.08), transparent 6%),
+                radial-gradient(800px 500px at 95% 90%, rgba(0,245,255,0.04), transparent 8%),
+                var(--bg);
+    color:var(--text);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    -webkit-font-smoothing:antialiased;
+    padding:36px;
+  }
+
+  h1{ margin:0 0 18px 6px; font-size:20px; color:var(--muted); font-weight:600; letter-spacing:0.4px }
+
+  /* masonry grid (responsive) */
+  .links {
+    column-width: 320px; /* ideal card width */
+    column-gap: 20px;
+    width: min(1100px, 96%);
+    margin: 12px auto;
+  }
+
+  /* card (masonry-friendly) */
+  .link-item {
+    display: inline-block; /* important for CSS columns */
+    width: 100%;
+    margin: 0 0 20px;
+    position: relative;
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    padding: 16px;
+    box-sizing: border-box;
+    overflow: visible;
+    backdrop-filter: blur(6px) saturate(120%);
+    -webkit-backdrop-filter: blur(6px) saturate(120%);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: transform .5s cubic-bezier(.2,.9,.2,1), box-shadow .35s;
+    transform-origin: center bottom;
+    box-shadow: 0 6px 20px rgba(2,6,23,0.6);
+    will-change: transform;
+  }
+
+  /* neon border effect using pseudo */
+  .link-item::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:0;
+    border-radius:inherit;
+    padding:2px;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3), var(--accent1));
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity:0.0;
+    transition:opacity .35s;
+    pointer-events:none;
+    filter: blur(10px);
+    animation: neonShift 3.8s linear infinite;
+  }
+  .link-item:hover::before{ opacity:1 }
+
+  @keyframes neonShift{
+    0%{ transform: rotate(0deg) scale(1) }
+    50%{ transform: rotate(120deg) scale(1.02) }
+    100%{ transform: rotate(360deg) scale(1) }
+  }
+
+  /* content layout inside card */
+  .link-head{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    z-index:2;
+    position:relative;
+  }
+
+  .link-icon {
+    width:56px;
+    height:56px;
+    min-width:56px;
+    border-radius:12px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border: 1px solid rgba(255,255,255,0.04);
+    box-shadow: inset 0 -8px 12px rgba(0,0,0,0.35), 0 8px 20px rgba(2,6,23,0.4);
+  }
+
+  .link-icon img{ width:36px; height:36px; object-fit:contain; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.45)); border-radius:6px }
+
+  .link-meta{ z-index:2; flex:1; min-width:0 }
+  .link-btn{
+    display:block;
+    font-weight:700;
+    text-decoration:none;
+    color:var(--text);
+    font-size:16px;
+    line-height:1.05;
+    margin-bottom:6px;
+    z-index:2;
+  }
+
+  /* gradient button look */
+  .link-cta{
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+    justify-content:center;
+    background: linear-gradient(90deg, var(--accent2), var(--accent1));
+    color:#041017;
+    font-weight:700;
+    padding:8px 12px;
+    border-radius:10px;
+    border:none;
+    cursor:pointer;
+    text-decoration:none;
+    box-shadow: 0 6px 18px rgba(124,58,237,0.14), 0 1px 0 rgba(255,255,255,0.04) inset;
+    transition: transform .2s ease, box-shadow .2s ease;
+    z-index:2;
+  }
+  .link-cta:active{ transform:translateY(1px) }
+  .link-cta .arrow{ font-size:12px; opacity:0.9 }
+
+  .link-desc{
+    margin-top:12px;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.45;
+    z-index:2;
+  }
+
+  /* hover pop */
+  .link-item:hover{
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 18px 50px rgba(2,6,23,0.75);
+  }
+
+  /* subtle card inner gradient bar */
+  .accent-bar{
+    position:absolute;
+    right:12px;
+    top:12px;
+    width:6px;
+    height:60px;
+    border-radius:8px;
+    background: linear-gradient(180deg, var(--accent1), var(--accent3));
+    opacity:0.95;
+    z-index:1;
+    filter: blur(2px);
+    mix-blend-mode:screen;
+  }
+
+  /* slide-in animation */
+  .link-item { opacity:0; transform: translateY(26px) scale(.995); transition: transform .6s cubic-bezier(.2,.9,.2,1), opacity .6s }
+  .link-item.in { opacity:1; transform: translateY(0) scale(1) }
+
+  /* responsive tweaks */
+  @media (max-width:540px){
+    :root{ --radius:12px }
+    .link-icon{ width:48px; height:48px; min-width:48px }
+    .link-item{ padding:14px }
+  }
 
   </style>
 </head>
@@ -276,39 +455,151 @@
     </div>
   </div>
   <!-- Links Section -->
-  <section class="links">
-    <div class="link-item">
-  <a href="https://sintus.gumroad.com/" class="link-btn" target="_blank">Book My Services</a>
-  <p>Master crypto trading and earn smarter with our exclusive course & ProfitProTip membership for daily trading signal.</p>
-</div>
-   <div class="link-item"> <a href="https://rsx.rf.gd/" class="link-btn" target="_blank">Secure Crypto Exchange</a> <p>🚀 Step into RSX — your P2P trading zone. No bank freezes, no drama — just smooth exchanges every time.</p> </div>
-    <div class="link-item">
-      <a href="https://t.me/profit_pro_tip" class="link-btn" target="_blank">ProfitProTip Telegram</a>
-      <p>💬 Join ProfitProTip for exclusive crypto tips, updates & insider insights!</p>
-</div>
-    
-    <div class="link-item">
-      <a href="https://profitprotip.blogspot.com/" class="link-btn" target="_blank">ProfitProTip Website</a>
-      <p>📝 My honest take on products & services I personally use — real insights, real reviews.</p>
-</div>
-    
-    <div class="link-item">
-      <a href="https://www.binance.com/en-IN/square/profile/nitra_x" class="link-btn" target="_blank">Binance Profile</a>
-      <p>💹 Follow my real-time crypto trades, tips & market insights — straight from my desk!</p>
-</div>
-    
-    <div class="link-item">
-  <a href="https://g.dev/rs0" class="link-btn" target="_blank">Google Dev Profile</a>
-  <p>
-    Explore my Google Developer profile — showcasing projects, achievements, and the tech stack I love building with. 
-    A quick peek into what I create and how I code.
-  </p>
-</div>
-    <div class="link-item">
-     <a href="https://www.linkedin.com/services/page/a2a5a332bb266061a8/" class="link-btn" target="_blank">LinkedIn Services</a>
-<p>🚀 Check out my services — hire me on the spot and get things done right.</p>
-</div>
-  </section>
+ <section class="links" id="links">
+  <article class="link-item" data-url="https://sintus.gumroad.com/" data-title="Book My Services">
+    <div class="accent-bar"></div>
+    <div class="link-head">
+      <div class="link-icon" aria-hidden></div>
+      <div class="link-meta">
+        <a class="link-btn" href="https://sintus.gumroad.com/" target="_blank" rel="noopener noreferrer">Book My Services</a>
+        <a class="link-cta" href="https://sintus.gumroad.com/" target="_blank" rel="noopener noreferrer">
+          Buy course <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <p class="link-desc">Master crypto trading and earn smarter with our exclusive course & ProfitProTip membership for daily trading signals.</p>
+  </article>
+
+  <article class="link-item" data-url="https://rsx.rf.gd/" data-title="Secure Crypto Exchange">
+    <div class="accent-bar"></div>
+    <div class="link-head">
+      <div class="link-icon" aria-hidden></div>
+      <div class="link-meta">
+        <a class="link-btn" href="https://rsx.rf.gd/" target="_blank" rel="noopener noreferrer">Secure Crypto Exchange</a>
+        <a class="link-cta" href="https://rsx.rf.gd/" target="_blank" rel="noopener noreferrer">Open RSX <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <p class="link-desc">🚀 Step into RSX — your P2P trading zone. No bank freezes, no drama — just smooth exchanges every time.</p>
+  </article>
+
+  <article class="link-item" data-url="https://t.me/profit_pro_tip" data-title="ProfitProTip Telegram">
+    <div class="accent-bar"></div>
+    <div class="link-head">
+      <div class="link-icon" aria-hidden></div>
+      <div class="link-meta">
+        <a class="link-btn" href="https://t.me/profit_pro_tip" target="_blank" rel="noopener noreferrer">ProfitProTip Telegram</a>
+        <a class="link-cta" href="https://t.me/profit_pro_tip" target="_blank" rel="noopener noreferrer">Join <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <p class="link-desc">💬 Join ProfitProTip for exclusive crypto tips, updates & insider insights!</p>
+  </article>
+
+  <article class="link-item" data-url="https://profitprotip.blogspot.com/" data-title="ProfitProTip Website">
+    <div class="accent-bar"></div>
+    <div class="link-head">
+      <div class="link-icon" aria-hidden></div>
+      <div class="link-meta">
+        <a class="link-btn" href="https://profitprotip.blogspot.com/" target="_blank" rel="noopener noreferrer">ProfitProTip Website</a>
+        <a class="link-cta" href="https://profitprotip.blogspot.com/" target="_blank" rel="noopener noreferrer">Read posts <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <p class="link-desc">📝 My honest take on products & services I personally use — real insights, real reviews.</p>
+  </article>
+
+  <article class="link-item" data-url="https://www.binance.com/en-IN/square/profile/nitra_x" data-title="Binance Profile">
+    <div class="accent-bar"></div>
+    <div class="link-head">
+      <div class="link-icon" aria-hidden></div>
+      <div class="link-meta">
+        <a class="link-btn" href="https://www.binance.com/en-IN/square/profile/nitra_x" target="_blank" rel="noopener noreferrer">Binance Profile</a>
+        <a class="link-cta" href="https://www.binance.com/en-IN/square/profile/nitra_x" target="_blank" rel="noopener noreferrer">Follow <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <p class="link-desc">💹 Follow my real-time crypto trades, tips & market insights — straight from my desk!</p>
+  </article>
+
+  <article class="link-item" data-url="https://g.dev/rs0" data-title="Google Dev Profile">
+    <div class="accent-bar"></div>
+    <div class="link-head">
+      <div class="link-icon" aria-hidden></div>
+      <div class="link-meta">
+        <a class="link-btn" href="https://g.dev/rs0" target="_blank" rel="noopener noreferrer">Google Dev Profile</a>
+        <a class="link-cta" href="https://g.dev/rs0" target="_blank" rel="noopener noreferrer">View profile <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <p class="link-desc">Explore my Google Developer profile — see my projects, stack, and coding journey.</p>
+  </article>
+
+  <article class="link-item" data-url="https://www.linkedin.com/services/page/a2a5a332bb266061a8/" data-title="LinkedIn Services">
+    <div class="accent-bar"></div>
+    <div class="link-head">
+      <div class="link-icon" aria-hidden></div>
+      <div class="link-meta">
+        <a class="link-btn" href="https://www.linkedin.com/services/page/a2a5a332bb266061a8/" target="_blank" rel="noopener noreferrer">LinkedIn Services</a>
+        <a class="link-cta" href="https://www.linkedin.com/services/page/a2a5a332bb266061a8/" target="_blank" rel="noopener noreferrer">Hire me <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <p class="link-desc">🚀 Check out my services — hire me instantly and get things done right.</p>
+  </article>
+
+</section>
+
+<script>
+/* small icon picker based on hostname */
+const ICONS = {
+  'gumroad.com': 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="%237b61ff"/></svg>',
+  'rsx.rf.gd': 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect rx="4" ry="4" width="20" height="20" x="2" y="2" fill="%2300f5ff"/></svg>',
+  't.me': 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="2,12 22,4 16,20 9,13" fill="%2300f5ff"/></svg>',
+  'blogspot.com': 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="%23ff4da6"/></svg>',
+  'binance.com': 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" fill="%23ffcc00"/></svg>',
+  'g.dev': 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0" fill="%2300d34d"/></svg>',
+  'linkedin.com': 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="3" ry="3" fill="%230077b5"/></svg>'
+};
+
+/* fallback colored svg generator */
+function coloredFallback(host){
+  const color = host.includes('http') ? '#7b61ff' : '#00f5ff';
+  return 'data:image/svg+xml;utf8,'+encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="4" fill="${color}"/></svg>`
+  );
+}
+
+function getHost(url){
+  try{ return new URL(url).hostname.replace('www.','') }catch(e){ return url }
+}
+
+/* assign icons & accessible labels */
+document.querySelectorAll('.link-item').forEach(card=>{
+  const url = card.dataset.url || card.querySelector('.link-btn')?.href;
+  const host = getHost(url||'');
+  const iconBox = card.querySelector('.link-icon');
+  const mapped = Object.keys(ICONS).find(k=> host.includes(k));
+  const imgSrc = mapped ? ICONS[mapped] : coloredFallback(host);
+
+  // inject img
+  const img = document.createElement('img');
+  img.src = imgSrc;
+  img.alt = host + ' icon';
+  img.loading = 'lazy';
+  iconBox.appendChild(img);
+
+  // set accessible link title if data-title exists
+  const titleLink = card.querySelector('.link-btn');
+  if(card.dataset.title && titleLink){
+    titleLink.textContent = card.dataset.title;
+  }
+});
+
+/* slide-in using IntersectionObserver for smooth animations */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target) }
+  });
+},{ threshold: 0.12 });
+
+document.querySelectorAll('.link-item').forEach(el=> io.observe(el));
+
+</script>
 <footer>
   <!-- Cookie / Music Bar -->
   <div id="cookie-bar" class="cookie-bar" role="dialog" aria-live="polite">
