@@ -12,7 +12,7 @@ Welcome to my **digital playground** — a place where creativity meets code. Th
 - [Google Dev Profile](https://g.dev/rs0)  
 - [Telegram Bot](https://t.me/swapsathibot)  
 - [Profit Pro Tip Blog](https://profitprotip.blogspot.com/)  
-- [RSX Exchange Website](https://rsx.rf.gd/)  
+
 
 ### Products  
 - [Profit Product](https://rsxin.gumroad.com/l/profit)  
