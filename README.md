@@ -10,8 +10,7 @@ Welcome to my **digital playground** — a place where creativity meets code. Th
 
 - [LinkedIn Services](https://www.linkedin.com/services/page/a2a5a332bb266061a8/)  
 - [Google Dev Profile](https://g.dev/rs0)  
-- [Binance Profile](https://www.binance.com/en-IN/square/profile/nitra_x)  
-- [Telegram Channel](https://t.me/profit_pro_tip)  
+- [Telegram Bot](https://t.me/swapsathibot)  
 - [Profit Pro Tip Blog](https://profitprotip.blogspot.com/)  
 - [RSX Exchange Website](https://rsx.rf.gd/)  
 
