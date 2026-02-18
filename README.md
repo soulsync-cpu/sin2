@@ -10,13 +10,8 @@ Welcome to my **digital playground** — a place where creativity meets code. Th
 
 - [LinkedIn Services](https://www.linkedin.com/services/page/a2a5a332bb266061a8/)  
 - [Google Dev Profile](https://g.dev/rs0)  
-- [Telegram Bot](https://t.me/swapsathibot)  
-- [Profit Pro Tip Blog](https://profitprotip.blogspot.com/)  
+- [UPWORK]([https://t.me/swapsathibot](https://www.upwork.com/freelancers/~019719c5ae734e138f?mp_source=share))   
 
-
-### Products  
-- [Profit Product](https://rsxin.gumroad.com/l/profit)  
-- [Crypto Product](https://rsxin.gumroad.com/l/crypto)  
 
 ---
 
