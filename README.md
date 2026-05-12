@@ -2,7 +2,7 @@
 
 Welcome to my **digital playground** — a place where creativity meets code. This is my **personal link page**, designed to showcase my profiles, projects, and creations all in one sleek, interactive experience.  
 
-![Profile Preview]([https://sintus.netlify.app/])
+![Worker Profile Preview]([https://sintus.netlify.app/])
 
 ---
 
