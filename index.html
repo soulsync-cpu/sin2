@@ -383,11 +383,50 @@
   .link-item { opacity:0; transform: translateY(26px) scale(.995); transition: transform .6s cubic-bezier(.2,.9,.2,1), opacity .6s }
   .link-item.in { opacity:1; transform: translateY(0) scale(1) }
 
+  /* Facebook Section Styling */
+  .fb-section {
+    width: 100%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .fb-section h2 {
+    font-size: 18px;
+    color: var(--muted);
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+  }
+
+  .fb-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .fb-page {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(2,6,23,0.6);
+  }
+
   /* responsive tweaks */
   @media (max-width:540px){
     :root{ --radius:12px }
     .link-icon{ width:48px; height:48px; min-width:48px }
     .link-item{ padding:14px }
+    .fb-section {
+      padding: 12px;
+      margin: 20px auto;
+    }
+    .fb-container {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   </style>
@@ -407,26 +446,26 @@
   <div class="social-row" aria-label="Follow Sintu on social media">
     <a class="social" href="https://github.com/soulsync-cpu" target="_blank" rel="noopener noreferrer" data-name="GitHub" aria-label="GitHub" style="color: #fafafa;">
       <!-- GitHub SVG -->
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12.01c0 5.08 3.29 9.38 7.86 10.9.57.11.78-.25.78-.55 0-.27-.01-1-.01-1.96-3.2.7-3.88-1.42-3.88-1.42-.52-1.33-1.27-1.69-1.27-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.67 1.24 3.32.95.1-.74.4-1.24.73-1.52-2.56-.29-5.25-1.28-5.25-5.71 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39 11.1 11.1 0 0 1 2.9.39c2.2-1.5 3.17-1.18 3.17-1.18.62 1.58.23 2.75.12 3.04.74.81 1.18 1.84 1.18 3.1 0 4.44-2.7 5.41-5.27 5.7.41.36.78 1.08.78 2.18 0 1.57-.01 2.83-.01 3.21 0 .31.21.67.79.55A11.52 11.52 0 0 0 23.5 12.01C23.5 5.65 18.35.5 12 .5z"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12.01c0 5.08 3.29 9.38 7.86 10.9.57.11.78-.25.78-.55 0-.27-.01-1-.01-1.96-3.2.7-3.88-1.42-3.88-1.42-.52-1.33-1.27-1.69[...]
     </a>
 
     <a class="social" href="https://www.youtube.com/@profitprotip" target="_blank" rel="noopener noreferrer" data-name="YouTube" aria-label="YouTube" style="color:#FF0000;">
       <!-- YouTube SVG -->
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2s-.2-1.7-.8-2.4c-.7-.9-1.5-.9-1.9-1-2.7-.2-6.8-.2-6.8-.2h-.1s-4.2 0-6.8.2c-.4.1-1.2.1-1.9 1-.6.7-.8 2.4-.8 2.4S3 8 3 9.8v4.4C3 16 3.2 17.7 3.2 17.7s.2 1.7.8 2.4c.7.9 1.7.9 2.1 1 1.5.1 6.3.2 6.3.2s4.2 0 6.8-.2c.4-.1 1.2-.1 1.9-1 .6-.7.8-2.4.8-2.4s.2-1.7.2-3.5V9.8c0-1.8-.2-3.6-.2-3.6zM9.8 15.7V8.9l6.2 3.4-6.2 3.4z"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2s-.2-1.7-.8-2.4c-.7-.9-1.5-.9-1.9-1-2.7-.2-6.8-.2-6.8-.2h-.1s-4.2 0-6.8.2c-.4.1-1.2.1-1.9 1-.6.7-.8 2.4-.8 2.4S3 8 3 9.8v4.4C3 16 3.[...]
     </a>
 
     <a class="social" href="https://www.facebook.com/sinntuuu" target="_blank" rel="noopener noreferrer" data-name="Facebook" aria-label="Facebook" style="color:#4267B2;">
       <!-- Facebook SVG -->
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07C2 17.1 5.66 21.3 10.44 22v-7.02H7.9v-2.9h2.54V9.5c0-2.5 1.5-3.88 3.77-3.88 1.09 0 2.23.19 2.23.19v2.45h-1.25c-1.23 0-1.61.77-1.61 1.56v1.87h2.74l-.44 2.9h-2.3V22C18.34 21.3 22 17.1 22 12.07z"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07C2 17.1 5.66 21.3 10.44 22v-7.02H7.9v-2.9h2.54V9.5c0-2.5 1.5-3.88 3.77-3.88 1.09 0 2.23.[...]
     </a>
 
     <a class="social" href="https://instagram.com/sinntuuu" target="_blank" rel="noopener noreferrer" data-name="Instagram" aria-label="Instagram" style="color:#E1306C;">
       <!-- Instagram SVG -->
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.2A4.8 4.8 0 1 0 16.8 13 4.8 4.8 0 0 0 12 8.2zm6.4-2.6a1.2 1.2 0 1 0 1.2 1.2 1.2 1.2 0 0 0-1.2-1.2zM12 10.8A1.2 1.2 0 1 1 10.8 9.6 1.2 1.2 0 0 1 12 10.8z"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.2A4.8 4.8 0 1 0 16.8 13 4.8 4.8 0 0 0 12 8.2zm6.4-2.6a1.2 1.[...]
     </a>
     <a class="social" href="https://twitter.com/profitprotip" target="_blank" rel="noopener noreferrer" data-name="Twitter" aria-label="Twitter" style="color:#1DA1F2;">
       <!-- Twitter SVG -->
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 3a10.9 10.9 0 0 1-3.14 0.86 4.48 4.48 0 0 0 1.95-2.48 9.05 9.05 0 0 1-2.88 1.1 4.52 4.52 0 0 0-7.71 4.12A12.83 12.83 0 0 1 1.64 2.15 4.52 4.52 0 0 0 2.9 7.7a4.44 4.44 0 0 1-2.05-.57v0.06a4.52 4.52 0 0 0 3.63 4.43 4.52 4.52 0 0 1-2.04.08 4.52 4.52 0 0 0 4.22 3.14A9.06 9.06 0 0 1 0 19.54a12.76 12.76 0 0 0 6.92 2"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 3a10.9 10.9 0 0 1-3.14 0.86 4.48 4.48 0 0 0 1.95-2.48 9.05 9.05 0 0 1-2.88 1.1 4.52 4.52 0 0 0-7.71 4.12A12.83 12.83 0 0 1 1.64 2.15[...]
     </a>
     <a class="social" href="https://kick.com/rs000" target="_blank" rel="noopener noreferrer" data-name="Kick" aria-label="Kick" style="color:#00E701;">
       <!-- Kick (generic) SVG -->
@@ -435,12 +474,12 @@
 
     <a class="social" href="https://t.me/sinntuu" target="_blank" rel="noopener noreferrer" data-name="Telegram" aria-label="Telegram" style="color:#0088CC;">
       <!-- Telegram SVG -->
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.4 7.2l-1.9 9.1c-.1.4-.4.5-.9.3-.5-.2-2.9-1-4.9-1.9-2.3-1.1-2.3-1.1-2.1-1.7l.4-1.4 3.9 2.8c.2.2.4.1.6-.1l7-6.4c.3-.3 0-.5-.4-.3L7.5 14.6 5.2 12.9c-.4-.3-.4-.6.2-.9L18.4 9.1c.4-.1.8.1.6.8z"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.4 7.2l-1.9 9.1c-.1.4-.4.5-.9.3-.5-.2-2.9-1-4.9-1.9-2.3-1.1-2.3-1.1-2.1-1[...]
     </a>
 
     <a class="social" href="https://discord.gg/gFHD4b8x" target="_blank" rel="noopener noreferrer" data-name="Discord" aria-label="Discord" style="color:#5865F2;">
       <!-- Discord SVG -->
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.6 4.3a19 19 0 0 0-4.6-1.4.1.1 0 0 0-.1.1c-.2.9-.4 1.9-.6 2.8-1.9-.3-3.8-.3-5.7 0-.2-.9-.4-1.9-.6-2.8 0-.1-.1-.1-.1-.1a19 19 0 0 0-4.6 1.4C2.7 9.6 2 14 3.2 18l.1.2c2.9 2.2 5.7 3.4 8.9 3.8.3 0 .4-.1.5-.3.6-1.1 1.1-2.2 1.6-3.4-2.2-.9-3.3-2.1-3.3-2.1 0 0 .6.3 1.6.7 3.1 1.1 6.5 1.1 9.6 0 1-.4 1.6-.7 1.6-.7s-1.1 1.2-3.3 2.1c.5 1.2 1 2.3 1.6 3.4.1.2.2.3.5.3 3.2-.3 6-1.6 8.9-3.8 1.2-4 0-8.4-3.2-13.7z"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.6 4.3a19 19 0 0 0-4.6-1.4.1.1 0 0 0-.1.1c-.2.9-.4 1.9-.6 2.8-1.9-.3-3.8-.3-5.7 0-.2-.9-.4-1.9-.6-2.8 0-.1-.1-.1-.1-.1a19 19 0 0 0-4.[...]
     </a>
   </div>
 <!-- overlay shown when cookies not accepted -->
@@ -514,6 +553,19 @@
    
 </section>
 
+<!-- Facebook Page Section -->
+<section class="fb-section">
+  <h2>Connect on Facebook</h2>
+  <div class="fb-container">
+    <div id="fb-root"></div>
+    <div class="fb-page" 
+      data-href="https://www.facebook.com/facebook"
+      data-width="380" 
+      data-hide-cover="false"
+      data-show-facepile="false"></div>
+  </div>
+</section>
+
 <script>
 /* small icon picker based on hostname */
 const ICONS = {
@@ -570,6 +622,10 @@ const io = new IntersectionObserver((entries)=>{
 document.querySelectorAll('.link-item').forEach(el=> io.observe(el));
 
 </script>
+
+<!-- Facebook SDK -->
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0" nonce="YOUR_NONCE"></script>
+
 <footer>
   <!-- Cookie / Music Bar -->
   <div id="cookie-bar" class="cookie-bar" role="dialog" aria-live="polite">
