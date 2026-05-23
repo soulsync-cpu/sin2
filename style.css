@@ -1,0 +1,55 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --bg:#081018;
+  --card-bg:rgba(255,255,255,0.04);
+  --glass:rgba(255,255,255,0.06);
+  --accent:#00f5ff;
+  --accent2:#7b61ff;
+  --text:#e6eef8;
+  --muted:#b9c6d8;
+  --radius:14px;
+}
+
+body{
+  font-family:Inter,system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(circle at top left,rgba(123,97,255,.15),transparent 30%),
+    radial-gradient(circle at bottom right,rgba(0,245,255,.1),transparent 30%),
+    var(--bg);
+}
+
+#star-bg{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
+
+.hero-header{
+  text-align:center;
+  padding:60px 20px 20px;
+}
+
+.profile-pic{
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid var(--accent);
+  margin-bottom:18px;
+  box-shadow:0 0 30px rgba(0,245,255,.25);
+}
+
+.hero-header h1{
+  font-size:2.2rem;
+  margin-bottom:10px;
+}
