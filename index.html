@@ -456,6 +456,17 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
     }
 
+    .sponsor-section {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .sponsor-section iframe {
+      max-width: 100%;
+      height: auto;
+    }
+
     :root {
       --bg: #081018;
       --card-bg: rgba(255, 255, 255, 0.04);
@@ -699,6 +710,11 @@
         flex-direction: column;
         align-items: center;
       }
+
+      .sponsor-section iframe {
+        width: 100%;
+        height: auto;
+      }
     }
   </style>
 </head>
@@ -727,7 +743,7 @@
       aria-label="GitHub">
       <svg viewBox="0 0 24 24" fill="currentColor">
         <path
-          d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.9c.58.1.79-.25.79-.56v-2.15c-3.2.7-3.88-1.38-3.88-1.38-.53-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.3 1.2-3.11-.12-.3-.52-1.5.11-3.13 0 0 .98-.31 3.2 1.19a11.1 11.1 0 0 1 5.82 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.63.23 2.83.11 3.13.75.81 1.2 1.85 1.2 3.11 0 4.43-2.7 5.4-5.27 5.68.42.37.78 1.1.78 2.22v3.3c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+          d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.9c.58.1.79-.25.79-.56v-2.15c-3.2.7-3.88-1.38-3.88-1.38-.53-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2[...]
       </svg>
     </a>
 
@@ -736,7 +752,7 @@
       aria-label="YouTube">
       <svg viewBox="0 0 24 24" fill="currentColor">
         <path
-          d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.5 15.5v-7l6 3.5-6 3.5Z" />
+          d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.[...]
       </svg>
     </a>
 
@@ -745,7 +761,7 @@
       aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="currentColor">
         <path
-          d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7Zm5 4.8A5.2 5.2 0 1 1 6.8 12 5.2 5.2 0 0 1 12 6.8Zm6.2-.9a1.2 1.2 0 1 1-1.2 1.2 1.2 1.2 0 0 1 1.2-1.2ZM12 8.3A3.7 3.7 0 1 0 15.7 12 3.7 3.7 0 0 0 12 8.3Z" />
+          d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7Zm5 4.8A5.2 5.2 0 1 1 6.8 12 5.2 5.2 0 0 1 12 6.8Zm6.2-.9a1.2 1.2 0 1 1-1.2 1.2 1.2 1.2 0 0 1 1.2-1.2ZM1[...]
       </svg>
     </a>
 
@@ -771,7 +787,7 @@
       aria-label="Discord">
       <svg viewBox="0 0 24 24" fill="currentColor">
         <path
-          d="M20 4.8A16.7 16.7 0 0 0 16 3.5l-.2.4a11 11 0 0 1 3.3 1.7 12.5 12.5 0 0 0-14.2 0 11 11 0 0 1 3.3-1.7L8 3.5A16.7 16.7 0 0 0 4 4.8C1.5 8.4 1 11.9 1.2 15.3a16.8 16.8 0 0 0 5 2.5l1.1-1.8c-.6-.2-1.2-.5-1.7-.8.1-.1.2-.1.3-.2a11.8 11.8 0 0 0 10.2 0l.3.2c-.5.3-1.1.6-1.7.8l1.1 1.8a16.8 16.8 0 0 0 5-2.5c.3-3.9-.5-7.4-2.8-10.5ZM9.5 13.5c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Zm5 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Z" />
+          d="M20 4.8A16.7 16.7 0 0 0 16 3.5l-.2.4a11 11 0 0 1 3.3 1.7 12.5 12.5 0 0 0-14.2 0 11 11 0 0 1 3.3-1.7L8 3.5A16.7 16.7 0 0 0 4 4.8C1.5 8.4 1 11.9 1.2 15.3a16.8 16.8 0 0 0 5 2.5l1.1-1.8c[...]
       </svg>
     </a>
 
@@ -936,6 +952,11 @@
       Your browser does not support the audio element.
     </audio>
 
+    <!-- GitHub Sponsors Section -->
+    <div class="sponsor-section">
+      <iframe src="https://github.com/sponsors/soulsync-cpu/card" title="Sponsor soulsync-cpu" height="225" width="600" style="border: 0;"></iframe>
+    </div>
+
     <!-- Footer Contact & Info -->
     <div class="site-footer">
       <div class="footer-content">
@@ -1000,84 +1021,39 @@
     // Accept cookies button — this is a user gesture and allows music playback
     acceptBtn.addEventListener('click', () => {
       localStorage.setItem('cookieAccepted', 'true');
-      localStorage.removeItem('cookieRejected'); // Clear reject preference
-      cookieBar.style.display = 'none';
+      localStorage.removeItem('cookieRejected');
       musicConsented = true;
-      // Show music toggle and attempt to play (user gesture detected)
+      cookieBar.style.display = 'none';
       updateMusicButton();
-      music.play().then(() => {
-        console.log('Music playback started');
-      }).catch((err) => {
-        console.warn('Autoplay was blocked by browser policy:', err);
-        // User can manually click the toggle button to start music
-      });
+      // Try to play music
+      music.play().catch(err => console.log('Autoplay prevented:', err));
     });
 
-    // Reject cookies button — user declines music and cookies
+    // Reject cookies button
     rejectBtn.addEventListener('click', () => {
       localStorage.setItem('cookieRejected', 'true');
-      localStorage.removeItem('cookieAccepted'); // Clear accept preference
+      localStorage.removeItem('cookieAccepted');
+      musicConsented = false;
       cookieBar.style.display = 'none';
       musicToggle.style.display = 'none';
-      musicConsented = false;
       music.pause();
-      music.currentTime = 0;
-      console.log('User rejected cookies and music');
     });
 
-    // Music toggle click handler — only allowed if user consented
+    // Music toggle button
     musicToggle.addEventListener('click', () => {
-      if (!musicConsented) {
-        console.warn('Music playback not allowed - user rejected cookies');
-        alert('Please accept cookies to enable music playback.');
-        return;
-      }
-
-      if (music.paused) {
-        music.play().then(() => {
-          updateMusicButton();
-          console.log('Music is now playing');
-        }).catch(err => {
-          console.warn('Play failed:', err);
-        });
-      } else {
-        music.pause();
+      if (musicConsented) {
+        if (music.paused) {
+          music.play().catch(err => console.log('Play error:', err));
+        } else {
+          music.pause();
+        }
         updateMusicButton();
-        console.log('Music is now paused');
       }
     });
 
-    // Floating Stars
-    const canvas = document.getElementById('star-bg');
-    const ctx = canvas.getContext('2d');
-    let stars = [];
-
-    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    function initStars() {
-      stars = [];
-      for (let i = 0; i < 120; i++) {
-        stars.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: Math.random() * 1.5 + 0.5, speed: Math.random() * 0.5 + 0.1 });
-      }
-    }
-
-    function drawStars() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#fff';
-      stars.forEach(star => {
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-        ctx.fill();
-        star.y -= star.speed;
-        if (star.y < 0) star.y = canvas.height;
-      });
-      requestAnimationFrame(drawStars);
-    }
-
-    initStars();
-    drawStars();
+    // Update button text when music state changes
+    music.addEventListener('play', updateMusicButton);
+    music.addEventListener('pause', updateMusicButton);
   </script>
 </body>
 
