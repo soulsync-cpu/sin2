@@ -1,56 +1,21 @@
-# Sintu | Personal Link Page
+# PI mera Bhai
 
-Welcome to my **digital playground** — a place where creativity meets code. This is my **personal link page**, designed to showcase my profiles, projects, and creations all in one sleek, interactive experience.  
+A small interactive PI calculator/demonstration that shows Math.PI and approximates PI with three methods:
 
-![Worker Profile Preview]([https://sintus.netlify.app/])
+- Leibniz series
+- Nilakantha series
+- Monte Carlo simulation (with optional canvas visualization)
 
----
+How to use
 
-## 🔗 Links Included
+1. Open `index.html` in your browser (or serve the folder statically).
+2. Choose the method and set the number of iterations.
 
-- [LinkedIn Services](https://www.linkedin.com/services/page/a2a5a332bb266061a8/)  
-- [Google Dev Profile](https://g.dev/rs0)  
-- [UPWORK]([https://t.me/swapsathibot](https://www.upwork.com/freelancers/~019719c5ae734e138f?mp_source=share))   
+Notes
 
+- The Monte Carlo method is stochastic — results vary each run. Increasing iterations improves accuracy but costs time.
+- The repository and branch created by this commit: branch `pi-mera-bhai`.
 
----
+License
 
-## 🎨 Design & Features
-
-- **Dark professional neon theme** with mint, pink, and gold accents  
-- **Profile pic** with pulse glow effect  
-- **Animated floating particles** for a premium feel  
-- **Glassmorphic buttons** with hover glow  
-- **Responsive layout** — looks perfect on mobile, tablet, and desktop  
-- **Background music** (click play/pause)  
-
----
-
-## ⚡ Deployment
-
-This page is **hosted on Netlify**, auto-deployed via GitHub.  
-- Repository: [GitHub Repo](https://github.com/soulsync-cpu/sin2)  
-- Live site: `[https://sintus.netlify.app/]`  
-
-Push any changes to this repo and Netlify automatically redeploys the page.
-
----
-
-## 🎵 Music Credits
-
-Background music: *Legacy of Baroque – Cinematic Background Music* (1 min loop)  
-[Link to music file](https://dl.dropboxusercontent.com/s/jmp6cox1heaxe5eobosj3/legacy-of-baroque-cinematic-background-music-for-video-stories-1-min-416088.mp3)  
-
----
-
-## 🚀 How to Use / Customize
-
-1. Clone this repo  
-2. Edit `index.html` to update profile pic, links, colors, or music  
-3. Push changes to GitHub  
-4. Netlify auto-updates the live page  
-
----
-
-**Designed & Built by Sintu**  
-*Crafting digital dreams into reality.*
+This demo is provided as-is. Copy, modify, and use freely.

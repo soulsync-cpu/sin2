@@ -1,0 +1,26 @@
+/* styles.css — simple styling for the PI calculator */
+:root{
+  --bg:#f6fbff;
+  --panel:#ffffff;
+  --accent:#2d9cdb;
+  --muted:#6b7280;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; padding:24px; font-family:Inter, Roboto, Arial, sans-serif; background:linear-gradient(180deg,#eef6ff,#f6fbff); color:#12202b; display:flex; align-items:center; justify-content:center;
+}
+.container{
+  width:760px; max-width:100%; background:var(--panel); border-radius:12px; padding:20px; box-shadow:0 8px 30px rgba(16,24,40,0.08);
+}
+h1{margin:0 0 8px 0; font-size:20px}
+.lede{margin:0 0 16px 0; color:var(--muted)}
+.controls{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:14px}
+.controls button{padding:8px 12px; border-radius:8px; border:0; background:var(--accent); color:white; cursor:pointer}
+.controls input[type="number"]{width:110px; padding:8px; border-radius:8px; border:1px solid #e6eef8}
+.results{padding:12px 0}
+#result{font-weight:700}
+.canvas-wrap{margin-top:12px}
+#mc-canvas{display:block; width:320px; max-width:100%; height:auto; background:linear-gradient(180deg,#fff,#f7fbff); border:1px solid #e6eef8; border-radius:8px}
+.hint{margin:8px 0 0 0; color:var(--muted); font-size:13px}
+footer{margin-top:12px; color:var(--muted); font-size:13px}
