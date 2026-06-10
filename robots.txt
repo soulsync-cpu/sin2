@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://sintus.netlify.app/sitemap.xml
+Sitemap: https://sintus.netlify.app/
