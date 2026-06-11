@@ -118,30 +118,33 @@
       margin: 14px auto;
       max-width: 900px;
       width: 92%;
+      flex-wrap: wrap;
     }
 
     .social {
       --icon-size: 48px;
       width: var(--icon-size);
       height: var(--icon-size);
-      display: inline-grid;
-      place-items: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--glass-border);
       border-radius: 10px;
       text-decoration: none;
       color: var(--accent);
-      /* default, overridden by network class */
       transition: transform .18s ease, box-shadow .18s ease;
       box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
       position: relative;
+      flex-shrink: 0;
     }
 
     .social svg {
-      width: 60%;
-      height: 60%;
+      width: 50%;
+      height: 50%;
       display: block;
       fill: currentColor;
+      stroke: currentColor;
     }
 
     .social:hover,
@@ -165,6 +168,7 @@
       border-radius: 8px;
       white-space: nowrap;
       box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5);
+      z-index: 999;
     }
 
     .social-bar {
@@ -195,63 +199,53 @@
       color: #4267B2;
     }
 
-    /* Facebook blue */
     .social.twitter {
       color: #1DA1F2;
     }
 
-    /* Twitter blue */
     .social.instagram {
       color: #E1306C;
     }
 
-    /* Instagram pink */
     .social.linkedin {
       color: #0A66C2;
     }
 
-    /* LinkedIn blue */
     .social.youtube {
       color: #FF0000;
     }
 
-    /* YouTube red */
     .social.tiktok {
       color: #000000;
     }
 
-    /* TikTok black */
     .social.snapchat {
       color: #FFFC00;
     }
 
-    /* Snapchat yellow */
     .social.reddit {
       color: #FF4500;
     }
 
-    /* Reddit orange */
     .social.github {
       color: #181717;
     }
 
-    /*Github */
     .social.kick {
       color: #00E701;
     }
 
-    /*Kick*/
     .social.telegram {
       color: #0088CC;
     }
 
-    /*Telegram*/
     .social.discord {
       color: #5865F2;
     }
 
-    /*Discord*/
-
+    .social.opensea {
+      color: #2081E4;
+    }
 
     /* ===== LINKS ===== */
     .links {
@@ -260,6 +254,7 @@
       margin: 18px auto;
       display: grid;
       gap: 16px;
+      grid-auto-flow: row;
     }
 
     .link-item {
@@ -282,13 +277,13 @@
       text-decoration: none;
       display: inline-block;
       margin-bottom: 6px;
+      word-wrap: break-word;
     }
 
     .link-item p {
       color: #d9d9d9;
       font-size: .94rem;
     }
-
 
     /* ===== COOKIE BAR ===== */
     .cookie-bar {
@@ -308,6 +303,8 @@
       color: #ccc;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
       z-index: 9999;
+      flex-wrap: wrap;
+      max-width: 90vw;
     }
 
     .cookie-controls button {
@@ -319,6 +316,7 @@
       cursor: pointer;
       font-size: 0.85rem;
       transition: all 0.3s;
+      white-space: nowrap;
     }
 
     .cookie-controls button:hover {
@@ -355,6 +353,7 @@
       text-align: center;
       font-size: 14px;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
+      width: 100%;
     }
 
     .footer-content {
@@ -409,45 +408,6 @@
       padding: 0 4px;
     }
 
-    .footer-contact p {
-      margin: 8px 0;
-      font-size: 13px;
-      color: #bbb;
-    }
-
-    .contact-list {
-      list-style: none;
-      padding: 0;
-      margin: 12px 0 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      justify-content: center;
-    }
-
-    .contact-list li {
-      margin: 0;
-    }
-
-    .contact-list a {
-      color: #1db954;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 500;
-      transition: color 0.3s, text-shadow 0.3s;
-    }
-
-    .contact-list a:hover {
-      color: #fff;
-      text-shadow: 0 0 8px rgba(29, 185, 84, 0.5);
-    }
-
-    .contact-list a:focus {
-      outline: 2px solid #1db954;
-      outline-offset: 2px;
-      border-radius: 4px;
-    }
-
     .footer-socials .social {
       width: 36px;
       height: 36px;
@@ -459,6 +419,8 @@
       display: flex;
       justify-content: center;
       margin: 20px 0;
+      width: 100%;
+      overflow-x: auto;
     }
 
     .sponsor-section iframe {
@@ -466,253 +428,107 @@
       height: auto;
     }
 
-    :root {
-      --bg: #081018;
-      --card-bg: rgba(255, 255, 255, 0.04);
-      --glass: rgba(255, 255, 255, 0.06);
-      --accent1: #00f5ff;
-      --accent2: #7b61ff;
-      --accent3: #ff4da6;
-      --text: #e6eef8;
-      --muted: #b9c6d8;
-      --radius: 14px;
-    }
-
-    /* page */
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(124, 58, 237, 0.08), transparent 6%),
-        radial-gradient(800px 500px at 95% 90%, rgba(0, 245, 255, 0.04), transparent 8%),
-        var(--bg);
-      color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      -webkit-font-smoothing: antialiased;
-      padding: 36px;
-    }
-
-    h1 {
-      margin: 0 0 18px 6px;
-      font-size: 20px;
-      color: var(--muted);
-      font-weight: 600;
-      letter-spacing: 0.4px
-    }
-
-    /* masonry grid (responsive) */
-    .links {
-      column-width: 320px;
-      /* ideal card width */
-      column-gap: 20px;
-      width: min(1100px, 96%);
-      margin: 12px auto;
-    }
-
-    /* card (masonry-friendly) */
-    .link-item {
-      display: inline-block;
-      /* important for CSS columns */
-      width: 100%;
-      margin: 0 0 20px;
-      position: relative;
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
-      padding: 16px;
-      box-sizing: border-box;
-      overflow: visible;
-      backdrop-filter: blur(6px) saturate(120%);
-      -webkit-backdrop-filter: blur(6px) saturate(120%);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      transition: transform .5s cubic-bezier(.2, .9, .2, 1), box-shadow .35s;
-      transform-origin: center bottom;
-      box-shadow: 0 6px 20px rgba(2, 6, 23, 0.6);
-      will-change: transform;
-    }
-
-    /* neon border effect using pseudo */
-    .link-item::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      border-radius: inherit;
-      padding: 2px;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3), var(--accent1));
-      -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      opacity: 0.0;
-      transition: opacity .35s;
-      pointer-events: none;
-      filter: blur(10px);
-      animation: neonShift 3.8s linear infinite;
-    }
-
-    .link-item:hover::before {
-      opacity: 1
-    }
-
-    @keyframes neonShift {
-      0% {
-        transform: rotate(0deg) scale(1)
+    /* ===== RESPONSIVE ADJUSTMENTS ===== */
+    @media (max-width: 768px) {
+      .hero-header {
+        padding: 40px 15px 15px;
       }
 
-      50% {
-        transform: rotate(120deg) scale(1.02)
+      .hero-header h1 {
+        font-size: 1.8rem;
       }
 
-      100% {
-        transform: rotate(360deg) scale(1)
-      }
-    }
-
-    /* content layout inside card */
-    .link-head {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      z-index: 2;
-      position: relative;
-    }
-
-    .link-icon {
-      width: 56px;
-      height: 56px;
-      min-width: 56px;
-      border-radius: 12px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      box-shadow: inset 0 -8px 12px rgba(0, 0, 0, 0.35), 0 8px 20px rgba(2, 6, 23, 0.4);
-    }
-
-    .link-icon img {
-      width: 36px;
-      height: 36px;
-      object-fit: contain;
-      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.45));
-      border-radius: 6px
-    }
-
-    .link-meta {
-      z-index: 2;
-      flex: 1;
-      min-width: 0
-    }
-
-    .link-btn {
-      display: block;
-      font-weight: 700;
-      text-decoration: none;
-      color: var(--text);
-      font-size: 16px;
-      line-height: 1.05;
-      margin-bottom: 6px;
-      z-index: 2;
-    }
-
-    /* gradient button look */
-    .link-cta {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(90deg, var(--accent2), var(--accent1));
-      color: #041017;
-      font-weight: 700;
-      padding: 8px 12px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      box-shadow: 0 6px 18px rgba(124, 58, 237, 0.14), 0 1px 0 rgba(255, 255, 255, 0.04) inset;
-      transition: transform .2s ease, box-shadow .2s ease;
-      z-index: 2;
-    }
-
-    .link-cta:active {
-      transform: translateY(1px)
-    }
-
-    .link-cta .arrow {
-      font-size: 12px;
-      opacity: 0.9
-    }
-
-    .link-desc {
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.45;
-      z-index: 2;
-    }
-
-    /* hover pop */
-    .link-item:hover {
-      transform: translateY(-8px) scale(1.01);
-      box-shadow: 0 18px 50px rgba(2, 6, 23, 0.75);
-    }
-
-    /* subtle card inner gradient bar */
-    .accent-bar {
-      position: absolute;
-      right: 12px;
-      top: 12px;
-      width: 6px;
-      height: 60px;
-      border-radius: 8px;
-      background: linear-gradient(180deg, var(--accent1), var(--accent3));
-      opacity: 0.95;
-      z-index: 1;
-      filter: blur(2px);
-      mix-blend-mode: screen;
-    }
-
-    /* slide-in animation */
-    .link-item {
-      opacity: 0;
-      transform: translateY(26px) scale(.995);
-      transition: transform .6s cubic-bezier(.2, .9, .2, 1), opacity .6s
-    }
-
-    .link-item.in {
-      opacity: 1;
-      transform: translateY(0) scale(1)
-    }
-
-    /* responsive tweaks */
-    @media (max-width:540px) {
-      :root {
-        --radius: 12px
+      .subtitle {
+        font-size: 0.9rem;
       }
 
-      .link-icon {
-        width: 48px;
-        height: 48px;
-        min-width: 48px
+      .social-row {
+        gap: 8px;
+        margin: 12px auto;
+      }
+
+      .social {
+        --icon-size: 44px;
+      }
+
+      .links {
+        width: 95%;
+        gap: 12px;
       }
 
       .link-item {
-        padding: 14px
+        padding: 12px 14px;
       }
 
-      .fb-section {
-        padding: 12px;
-        margin: 20px auto;
+      .cookie-bar {
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        transform: none;
+        padding: 10px 12px;
+        gap: 10px;
       }
 
-      .fb-container {
-        flex-direction: column;
-        align-items: center;
+      #music-toggle {
+        right: 10px;
+        bottom: 10px;
+        padding: 8px 10px;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-header {
+        padding: 30px 12px 12px;
       }
 
-      .sponsor-section iframe {
+      .hero-header h1 {
+        font-size: 1.5rem;
+      }
+
+      .profile-pic {
+        width: 100px;
+        height: 100px;
+      }
+
+      .subtitle {
+        font-size: 0.85rem;
+      }
+
+      .social-row {
+        gap: 6px;
+        margin: 10px auto;
+      }
+
+      .social {
+        --icon-size: 40px;
+      }
+
+      .social svg {
+        width: 55%;
+        height: 55%;
+      }
+
+      .links {
         width: 100%;
-        height: auto;
+        gap: 10px;
+        padding: 0 10px;
+      }
+
+      .link-item {
+        padding: 10px 12px;
+      }
+
+      .link-btn {
+        font-size: 0.95rem;
+      }
+
+      .contact-list {
+        gap: 10px;
+      }
+
+      .contact-list a {
+        font-size: 12px;
       }
     }
   </style>
@@ -733,97 +549,90 @@
     <p class="subtitle">💻 Digital Creator | Crypto Trader<br>Exploring the Crypto World 🌍 step-by-step &
       trade-by-trade 😄</p>
   </header>
-  <!-- Inline Social Icons (inserted as requested) -->
-  <!-- Social Icons -->
+
+  <!-- Inline Social Icons -->
   <div class="social-row" aria-label="Follow Sintu on social media">
 
     <!-- GitHub -->
     <a class="social github" href="https://github.com/soulsync-cpu" target="_blank" rel="noopener noreferrer"
-      aria-label="GitHub">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path
-          d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.9c.58.1.79-.25.79-.56v-2.15c-3.2.7-3.88-1.38-3.88-1.38-.53-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2[...]
+      aria-label="GitHub" data-name="GitHub">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
       </svg>
     </a>
 
     <!-- YouTube -->
     <a class="social youtube" href="https://www.youtube.com/@profitprotip" target="_blank" rel="noopener noreferrer"
-      aria-label="YouTube">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path
-          d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.[...]
+      aria-label="YouTube" data-name="YouTube">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
       </svg>
     </a>
 
     <!-- Instagram -->
     <a class="social instagram" href="https://instagram.com/sinntuuu" target="_blank" rel="noopener noreferrer"
-      aria-label="Instagram">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path
-          d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7Zm5 4.8A5.2 5.2 0 1 1 6.8 12 5.2 5.2 0 0 1 12 6.8Zm6.2-.9a1.2 1.2 0 1 1-1.2 1.2 1.2 1.2 0 0 1 1.2-1.2ZM1[...]
+      aria-label="Instagram" data-name="Instagram">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 3.6c2.337 0 2.613.01 3.528.051 1.356.062 2.633.347 3.585 1.299.952.952 1.237 2.229 1.299 3.585.041.915.051 1.191.051 3.528s-.01 2.613-.051 3.528c-.062 1.356-.347 2.633-1.299 3.585-.952.952-2.229 1.237-3.585 1.299-.915.041-1.191.051-3.528.051s-2.613-.01-3.528-.051c-1.356-.062-2.633-.347-3.585-1.299-.952-.952-1.237-2.229-1.299-3.585-.041-.915-.051-1.191-.051-3.528s.01-2.613.051-3.528c.062-1.356.347-2.633 1.299-3.585.952-.952 2.229-1.237 3.585-1.299.915-.041 1.191-.051 3.528-.051zm0 1.944c-2.576 0-4.656 2.08-4.656 4.656s2.08 4.656 4.656 4.656 4.656-2.08 4.656-4.656-2.08-4.656-4.656-4.656zm0 7.68c-1.67 0-3.024-1.354-3.024-3.024s1.354-3.024 3.024-3.024 3.024 1.354 3.024 3.024-1.354 3.024-3.024 3.024zm3.888-9.072c-.6 0-1.092.492-1.092 1.092s.492 1.092 1.092 1.092 1.092-.492 1.092-1.092-.492-1.092-1.092-1.092z"/>
       </svg>
     </a>
 
     <!-- Twitter/X -->
     <a class="social twitter" href="https://twitter.com/profitprotip" target="_blank" rel="noopener noreferrer"
-      aria-label="Twitter">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M18.9 2H22l-6.8 7.8L23 22h-6.8l-5.3-6.9L4.9 22H2l7.3-8.3L1 2h6.9l4.8 6.3L18.9 2Z" />
+      aria-label="Twitter" data-name="Twitter">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.727l-5.1-6.654-5.848 6.654H2.423l7.723-8.835L1.029 2.25h6.886l4.59 6.055 5.739-6.055zM17.15 18.75h1.732L6.886 3.987H5.074l12.076 14.763z"/>
       </svg>
     </a>
 
     <!-- Telegram -->
     <a class="social telegram" href="https://t.me/@rsxing" target="_blank" rel="noopener noreferrer"
-      aria-label="Telegram">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path
-          d="M21.5 2.5 2.9 9.7c-1.3.5-1.3 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.1.8.8.8.5 0 .7-.2 1-.5l2.3-2.2 4.7 3.5c.9.5 1.5.3 1.7-.8L23 4c.3-1.3-.5-1.9-1.5-1.5Z" />
+      aria-label="Telegram" data-name="Telegram">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21.198 2.433a2.242 2.242 0 0 0-2.37.733l-18.2 18.2c-.34.34-.427.893-.206 1.348.22.455.682.743 1.184.743h2.524l3.76-11.28c.132-.4.526-.667.976-.667.45 0 .843.268.975.667l3.76 11.28h2.524c.502 0 .964-.288 1.184-.743.22-.455.134-1.008-.206-1.348l-8.2-8.2 10.03-10.03c.553-.553.553-1.449 0-2.002z"/>
       </svg>
     </a>
 
     <!-- Discord -->
     <a class="social discord" href="https://discord.gg/gFHD4b8x" target="_blank" rel="noopener noreferrer"
-      aria-label="Discord">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path
-          d="M20 4.8A16.7 16.7 0 0 0 16 3.5l-.2.4a11 11 0 0 1 3.3 1.7 12.5 12.5 0 0 0-14.2 0 11 11 0 0 1 3.3-1.7L8 3.5A16.7 16.7 0 0 0 4 4.8C1.5 8.4 1 11.9 1.2 15.3a16.8 16.8 0 0 0 5 2.5l1.1-1.8c[...]
+      aria-label="Discord" data-name="Discord">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.864-.607 1.25a18.27 18.27 0 0 0-5.487 0c-.163-.386-.396-.875-.607-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994.021-.037.001-.08-.037-.092a13.107 13.107 0 0 1-1.872-.892.082.082 0 0 1-.008-.137c.126-.095.252-.195.372-.293a.074.074 0 0 1 .076-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .076.01c.12.098.246.198.372.293a.082.082 0 0 1-.007.137 12.299 12.299 0 0 1-1.873.892.083.083 0 0 0-.036.093c.352.699.764 1.365 1.225 1.994a.078.078 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.082.082 0 0 0 .032-.056c.44-4.339.079-8.1.779-12.11a.083.083 0 0 0-.031-.057zM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.948-2.419 2.157-2.419 1.211 0 2.176 1.096 2.157 2.42 0 1.333-.948 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.948-2.419 2.157-2.419 1.211 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+      </svg>
+    </a>
+
+    <!-- OpenSea -->
+    <a class="social opensea" href="https://opensea.io/collection/eternal-mind-226270403" target="_blank" rel="noopener noreferrer"
+      aria-label="OpenSea NFT Collection" data-name="OpenSea">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.78 11.72c0 .6-.49 1.09-1.09 1.09h-3.69v2.73h-1.31v-4.82h4.99c.6 0 1.1.49 1.1 1.09zm-1.09-2.82h-4.99V9.17h4.99c.6 0 1.09.48 1.09 1.09 0 .61-.49 1.09-1.09 1.09z"/>
       </svg>
     </a>
 
   </div>
-  <!-- overlay shown when cookies not accepted -->
-  <div class="player-overlay" id="player-overlay" style="display:none;">
-    <p>Background music is disabled until you enable cookies or permit audio.</p>
-    <small>Click "Enable Music" to accept and start playback (this stores a local preference).</small>
-    <div style="display:flex; gap:8px; margin-top:6px;">
-      <button id="enable-music" class="btn-play">Enable Music</button>
-      <button id="overlay-dismiss" class="btn-aux">Maybe later</button>
-    </div>
-  </div>
-  </div>
-  </div>
+
   <!-- Links Section -->
   <section class="links" id="main-content" role="main" aria-label="Sintu's professional links and services">
-    <article class="link-item" data-url="https://sintus.gumroad.com/" data-title="RSX Digital Store">
-      <div class="accent-bar"></div>
+    
+    <!-- RSX Digital Store -->
+    <article class="link-item" data-url="https://rsxi.gumroad.com/" data-title="RSX Digital Store">
       <div class="link-head">
-        <div class="link-icon" aria-hidden></div>
         <div class="link-meta">
           <a class="link-btn" href="https://rsxi.gumroad.com/" target="_blank" rel="noopener noreferrer">RSX Digital</a>
           <a class="link-cta" href="https://rsxi.gumroad.com/l/crypto" target="_blank" rel="noopener noreferrer">Master
             Crypto Trading<span class="arrow">→</span></a>
-          <a class="link-cta" hraf="https://rsxi.gumroad.com/l/profit" target="_blank"
+          <a class="link-cta" href="https://rsxi.gumroad.com/l/profit" target="_blank"
             rel="noopener noreferrer">ProfitProTip</a>
         </div>
       </div>
       <p class="link-desc">Master the art of crypto trading and earn smarter with our exclusive course, also we have
         ProfitProTip membership for your daily trading signals.</p>
     </article>
-       <article class="link-item" data-url="https://www.linkedin.com/services/page/a2a5a332bb266061a8/"
+
+    <!-- LinkedIn Services -->
+    <article class="link-item" data-url="https://www.linkedin.com/services/page/a2a5a332bb266061a8/"
       data-title="LinkedIn Services">
-      <div class="accent-bar"></div>
       <div class="link-head">
-        <div class="link-icon" aria-hidden></div>
         <div class="link-meta">
           <a class="link-btn" href="https://www.linkedin.com/services/page/a2a5a332bb266061a8/" target="_blank"
             rel="noopener noreferrer">Sintu's LinkedIn Service Page</a>
@@ -833,10 +642,10 @@
       </div>
       <p class="link-desc">🚀 Check out my linkedin services page — contact me instantly and get things done right.</p>
     </article>
+
+    <!-- Google Developer Profile -->
     <article class="link-item" data-url="https://g.dev/rs0" data-title="Google Developer Profile">
-      <div class="accent-bar"></div>
       <div class="link-head">
-        <div class="link-icon" aria-hidden></div>
         <div class="link-meta">
           <a class="link-btn" href="https://g.dev/rs0" target="_blank" rel="noopener noreferrer">Google Developer
             Profile</a>
@@ -847,22 +656,43 @@
       <p class="link-desc">Explore my Google Developer profile — see my projects, badges, and coding journey.</p>
     </article>
 
+    <!-- NEW: OpenSea NFT Collection -->
+    <article class="link-item" data-url="https://opensea.io/collection/eternal-mind-226270403" data-title="Eternal Mind NFT Collection">
+      <div class="link-head">
+        <div class="link-meta">
+          <a class="link-btn" href="https://opensea.io/collection/eternal-mind-226270403" target="_blank" rel="noopener noreferrer">Eternal Mind NFT Collection</a>
+          <a class="link-cta" href="https://opensea.io/collection/eternal-mind-226270403" target="_blank" rel="noopener noreferrer">Explore NFTs<span class="arrow">→</span></a>
+        </div>
+      </div>
+      <p class="link-desc">🎨 Discover my exclusive digital art collection on OpenSea. Explore unique NFTs from the Eternal Mind collection.</p>
+    </article>
+
   </section>
+
+  <!-- overlay shown when cookies not accepted -->
+  <div class="player-overlay" id="player-overlay" style="display:none;">
+    <p>Background music is disabled until you enable cookies or permit audio.</p>
+    <small>Click "Enable Music" to accept and start playback (this stores a local preference).</small>
+    <div style="display:flex; gap:8px; margin-top:6px;">
+      <button id="enable-music" class="btn-play">Enable Music</button>
+      <button id="overlay-dismiss" class="btn-aux">Maybe later</button>
+    </div>
+  </div>
+
+  <!-- Links Section -->
+
   <script>
-    /* small icon picker based on hostname */
+    /* Icon mapping for dynamic icon injection */
     const ICONS = {
       'gumroad.com': 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="%237b61ff"/></svg>',
-      'rsx.rf.gd': 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect rx="4" ry="4" width="20" height="20" x="2" y="2" fill="%2300f5ff"/></svg>',
-      't.me': 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="2,12 22,4 16,20 9,13" fill="%2300f5ff"/></svg>',
-      'blogspot.com': 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="%23ff4da6"/></svg>',
-      'binance.com': 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" fill="%23ffcc00"/></svg>',
-      'g.dev': 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0" fill="%2300d34d"/></svg>',
-      'linkedin.com': 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="3" ry="3" fill="%230077b5"/></svg>'
+      'linkedin.com': 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="3" ry="3" fill="%230077b5"/></svg>',
+      'g.dev': 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="%2300d34d"/></svg>',
+      'opensea.io': 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.78 11.72c0 .6-.49 1.09-1.09 1.09h-3.69v2.73h-1.31v-4.82h4.99c.6 0 1.1.49 1.1 1.09zm-1.09-2.82h-4.99V9.17h4.99c.6 0 1.09.48 1.09 1.09 0 .61-.49 1.09-1.09 1.09z" fill="%232081E4"/></svg>'
     };
 
-    /* fallback colored svg generator */
+    /* Fallback colored SVG generator */
     function coloredFallback(host) {
-      const color = host.includes('http') ? '#7b61ff' : '#00f5ff';
+      const color = host.includes('gumroad') ? '%237b61ff' : '%2300f5ff';
       return 'data:image/svg+xml;utf8,' + encodeURIComponent(
         `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="4" fill="${color}"/></svg>`
       );
@@ -872,29 +702,37 @@
       try { return new URL(url).hostname.replace('www.', '') } catch (e) { return url }
     }
 
-    /* assign icons & accessible labels */
+    /* Assign icons & accessible labels */
     document.querySelectorAll('.link-item').forEach(card => {
       const url = card.dataset.url || card.querySelector('.link-btn')?.href;
       const host = getHost(url || '');
-      const iconBox = card.querySelector('.link-icon');
       const mapped = Object.keys(ICONS).find(k => host.includes(k));
       const imgSrc = mapped ? ICONS[mapped] : coloredFallback(host);
 
-      // inject img
+      // Create icon container if needed
+      let iconBox = card.querySelector('.link-icon');
+      if (!iconBox) {
+        iconBox = document.createElement('div');
+        iconBox.className = 'link-icon';
+        iconBox.setAttribute('aria-hidden', 'true');
+        card.querySelector('.link-head').insertBefore(iconBox, card.querySelector('.link-meta'));
+      }
+
+      // Inject img
       const img = document.createElement('img');
       img.src = imgSrc;
       img.alt = host + ' icon';
       img.loading = 'lazy';
       iconBox.appendChild(img);
 
-      // set accessible link title if data-title exists
+      // Set accessible link title if data-title exists
       const titleLink = card.querySelector('.link-btn');
       if (card.dataset.title && titleLink) {
         titleLink.textContent = card.dataset.title;
       }
     });
 
-    /* slide-in using IntersectionObserver for smooth animations */
+    /* Slide-in using IntersectionObserver for smooth animations */
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) }
@@ -904,6 +742,7 @@
     document.querySelectorAll('.link-item').forEach(el => io.observe(el));
 
   </script>
+
   <footer>
     <!-- Cookie / Music Bar (GDPR Compliant) -->
     <div id="cookie-bar" class="cookie-bar" role="dialog" aria-labelledby="cookie-title" aria-live="polite">
@@ -915,6 +754,7 @@
           Reject</button>
       </div>
     </div>
+
     <!-- Music Toggle (moved out of cookie bar so it can be shown independently) -->
     <button id="music-toggle" aria-label="Toggle background music">🔊 Play Music</button>
 
@@ -923,10 +763,12 @@
       <source src="https://raw.githubusercontent.com/soulsync-cpu/sin2/main/legacy.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
+
     <!-- GitHub Sponsors Section -->
     <div class="sponsor-section">
       <iframe src="https://github.com/sponsors/soulsync-cpu/card" title="Sponsor soulsync-cpu" height="225" width="600" style="border: 0;"></iframe>
     </div>
+
     <!-- Footer Contact & Info -->
     <div class="site-footer">
       <div class="footer-content">
@@ -946,11 +788,14 @@
                 aria-label="Kick streaming profile">🎮 Kick @sintu</a></li>
             <li><a href="https://discord.gg/gFHD4b8x" target="_blank" rel="noopener noreferrer"
                 aria-label="Discord server">💜 Discord Server</a></li>
+            <li><a href="https://opensea.io/collection/eternal-mind-226270403" target="_blank" rel="noopener noreferrer"
+                aria-label="OpenSea NFT collection">🎨 OpenSea NFTs</a></li>
           </ul>
         </div>
       </div>
     </div>
   </footer>
+
   <script>
     // Elements
     const music = document.getElementById('bg-music');
@@ -958,7 +803,7 @@
     const cookieBar = document.getElementById('cookie-bar');
     const acceptBtn = document.getElementById('accept-cookies');
     const rejectBtn = document.getElementById('reject-cookies');
-    let musicConsented = false; // Track if user has given consent
+    let musicConsented = false;
 
     // Helper to update music toggle UI
     function updateMusicButton() {
@@ -971,31 +816,26 @@
     const cookieRejected = localStorage.getItem('cookieRejected') === 'true';
 
     if (cookieAccepted) {
-      // User previously accepted — hide cookie prompt
       cookieBar.style.display = 'none';
       musicConsented = true;
-      // Show music toggle (actual autoplay requires user gesture)
       updateMusicButton();
     } else if (cookieRejected) {
-      // User previously rejected — hide cookie prompt and music toggle
       cookieBar.style.display = 'none';
       musicToggle.style.display = 'none';
       musicConsented = false;
     } else {
-      // Show cookie prompt for first-time visitors
       cookieBar.style.display = 'flex';
       musicToggle.style.display = 'none';
       musicConsented = false;
     }
 
-    // Accept cookies button — this is a user gesture and allows music playback
+    // Accept cookies button
     acceptBtn.addEventListener('click', () => {
       localStorage.setItem('cookieAccepted', 'true');
       localStorage.removeItem('cookieRejected');
       musicConsented = true;
       cookieBar.style.display = 'none';
       updateMusicButton();
-      // Try to play music
       music.play().catch(err => console.log('Autoplay prevented:', err));
     });
 
@@ -1020,11 +860,7 @@
         updateMusicButton();
       }
     });
-
-    // Update button text when music state changes
-    music.addEventListener('play', updateMusicButton);
-    music.addEventListener('pause', updateMusicButton);
   </script>
-</body>
 
+</body>
 </html>
